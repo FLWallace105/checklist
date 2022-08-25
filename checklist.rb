@@ -55,6 +55,10 @@ module Checklist
 
       puts "We have #{product_count.inspect} products in Ellie now"
 
+      puts "----------------"
+
+      puts "We have #{product_count.body['count']} products"
+
     end
 
 end
