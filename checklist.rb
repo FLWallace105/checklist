@@ -35,7 +35,7 @@ module Checklist
     #   ShopifyAPI::Base.api_version = '2020-04'
     #   ShopifyAPI::Base.timeout = 180
 
-    puts "#{@api_key}, #{@secret}, #{@shopname}"
+    puts "#{@api_key}, #{@secret}, #{@shopname}, #{@app_token}"
 
 
       ShopifyAPI::Context.setup(
@@ -43,7 +43,7 @@ module Checklist
         api_secret_key: @app_token,
         scope: "DUMMY",
         host_name: "DUMMY",
-        private_shop: "elliestaging.myshopify.com",
+        private_shop: "#{@shopname}.myshopify.com",
         session_storage: ShopifyAPI::Auth::FileSessionStorage.new,
         is_embedded: false, 
         is_private: true, 
@@ -52,12 +52,99 @@ module Checklist
       )
 
       product_count = ShopifyAPI::Product.count()
+      puts "product_count = #{product_count.inspect}"
 
-      puts "We have #{product_count.inspect} products in Ellie now"
+      puts "We have #{product_count.body['count']} products in Ellie now"
 
       puts "----------------"
 
       puts "We have #{product_count.body['count']} products"
+
+      my_today = DateTime.now.strftime("%B %Y")
+      monthly_collection = "#{my_today} Collections"
+
+      
+
+      my_collection = ShopifyAPI::CustomCollection.all(title: monthly_collection)
+      puts "my_collection = #{my_collection.inspect}"
+      
+
+      puts my_collection.first.original_state[:id]
+      collection_id = my_collection.first.original_state[:id]
+
+      product_count = ShopifyAPI::Product.count(:collection_id => collection_id).body['count']
+
+      puts "We have #{product_count} products in the collection"
+
+      
+
+      my_products = ShopifyAPI::Product.all( collection_id: collection_id,  limit: 250 )
+      num_products = 0
+
+      
+      
+
+      
+      
+
+      my_products.each do |myp|
+        puts "-----"
+        #puts "product_id: #{myp.original_state[:id]} product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}"
+        num_products  += 1
+        # puts "***************"
+        # puts myp.inspect
+        # puts "**************"
+
+        mymeta = ShopifyAPI::Metafield.all(resource: 'products', resource_id: myp.original_state[:id], namespace: 'ellie_order_info', fields: 'value')
+        # #note, it could be just []
+        #puts "mymeta = #{mymeta}"
+        # #make sure we assign a value to the string we pass in later
+        my_meta_str = nil
+        if mymeta != []
+          my_meta_str = mymeta.first.original_state[:value]
+        else
+          my_meta_str = nil
+        end
+  
+        puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, published_at: #{myp.original_state[:published_at]}}"
+        
+  
+      end
+
+      puts "here we have #{num_products} number of products"
+      puts "done with first loop"
+      
+      if product_count > 250
+
+      while my_products.next_page?
+
+        my_products = my_products.fetch_next_page
+      
+        my_products.each do |myp|
+          puts "--SECOND LOOP ---"
+          mymeta = ShopifyAPI::Metafield.all(resource: 'products', resource_id: myp.original_state[:id], namespace: 'ellie_order_info', fields: 'value')
+          # #note, it could be just []
+          #puts "mymeta = #{mymeta}"
+          # #make sure we assign a value to the string we pass in later
+          my_meta_str = nil
+          if mymeta != []
+            my_meta_str = mymeta.first.original_state[:value]
+          else
+            my_meta_str = nil
+          end
+  
+          puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, published_at: #{myp.original_state[:published_at]}}"
+          
+    
+          
+          
+  
+        end
+      end
+
+    end
+
+
 
     end
 
