@@ -35,6 +35,8 @@ module Checklist
     #   ShopifyAPI::Base.api_version = '2020-04'
     #   ShopifyAPI::Base.timeout = 180
 
+    product_array = Array.new
+
     puts "#{@api_key}, #{@secret}, #{@shopname}, #{@app_token}"
 
 
@@ -107,7 +109,10 @@ module Checklist
         end
   
         puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, published_at: #{myp.original_state[:published_at]}}"
+
+        my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "published_at" => myp.original_state[:published_at]}
         
+        product_array.push(my_hash)
   
       end
 
@@ -135,16 +140,44 @@ module Checklist
   
           puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, published_at: #{myp.original_state[:published_at]}}"
           
-    
+          my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "published_at" => myp.original_state[:published_at]}
+        
+          product_array.push(my_hash)
           
           
   
         end
       end
-
     end
 
+    product_array.each do |myp|
+      puts "-------------"
+      puts myp
+      puts "-------------"
 
+      my_collection = ShopifyAPI::CustomCollection.all(title: myp['product_collection'])
+      puts "my_collection = #{my_collection.inspect}"
+      puts my_collection.first.original_state[:id]
+      collection_id = my_collection.first.original_state[:id]
+      product_count = ShopifyAPI::Product.count(:collection_id => collection_id).body['count']
+      puts "We have #{product_count} products in the collection"
+
+      product_title_number = 0
+
+      if /(\d\s)/i =~ myp['product_title']
+        product_title_number = $1.to_i
+        puts "product_title_number = #{product_title_number}"
+      end
+      if product_title_number == product_count.to_i
+        puts "Products in the collection match what they should be, products in collection = #{product_title_number}, prods in collection = #{product_count}"
+      else
+        puts "ERROR, product_count does not match the collection: products in collection = #{product_title_number}, prods in collection = #{product_count}"
+      end
+
+      my_products = ShopifyAPI::Product.all( collection_id: collection_id,  limit: 250 )
+      
+
+    end
 
     end
 
