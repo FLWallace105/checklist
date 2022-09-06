@@ -12,8 +12,9 @@ Dotenv.load
 
 namespace :pull_shopify do
     desc 'Pull down the prospective rollover month collection and products, metafields etc'
-    task :get_next_month_collection do |t|
-        Checklist::ShopifyGetter.new.shopify_get_all_resources
+    task :get_next_month_collection, :email do |t, args|
+        email = args['email']
+        Checklist::ShopifyGetter.new.shopify_get_all_resources(email)
     end
 
 end

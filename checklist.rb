@@ -2,17 +2,19 @@
 require 'dotenv'
 require 'httparty'
 require 'shopify_api'
-require 'active_record'
-require 'sinatra/activerecord'
+# require 'active_record'
+# require 'sinatra/activerecord'
 #require 'logger'
+require 'sendgrid-ruby'
+
 
 Dotenv.load
-Dir[File.join(__dir__, 'lib', '*.rb')].each { |file| require file }
-Dir[File.join(__dir__, 'models', '*.rb')].each { |file| require file }
+# Dir[File.join(__dir__, 'lib', '*.rb')].each { |file| require file }
+# Dir[File.join(__dir__, 'models', '*.rb')].each { |file| require file }
 
 module Checklist
   class ShopifyGetter
-    
+    include SendGrid
     
 
     def initialize
@@ -25,7 +27,7 @@ module Checklist
       
     end
 
-    def shopify_get_all_resources
+    def shopify_get_all_resources(myemail)
    
       puts "Starting all shopify resources download"
     #   shop_url = "https://#{@api_key}:#{@password}@#{@shopname}.myshopify.com/admin"
@@ -150,6 +152,8 @@ module Checklist
       end
     end
 
+    detail_product_collection = Array.new
+
     product_array.each do |myp|
       puts "-------------"
       puts myp
@@ -170,14 +174,94 @@ module Checklist
       end
       if product_title_number == product_count.to_i
         puts "Products in the collection match what they should be, products in collection = #{product_title_number}, prods in collection = #{product_count}"
+        myp['product_match'] = true
       else
         puts "ERROR, product_count does not match the collection: products in collection = #{product_title_number}, prods in collection = #{product_count}"
+        myp['product_match'] = false
       end
 
+      next if  myp['product_collection'] =~ /ellie\spick/i
       my_products = ShopifyAPI::Product.all( collection_id: collection_id,  limit: 250 )
+
+      my_products.each do |myprod|
+        puts "-------------"
+        puts myprod.inspect
+        puts "-------------"
+        temp_hash2 = {"product_collection" => myp['product_collection'], "product_name" => myprod.original_state[:title], "product_type" => myprod.original_state[:product_type], "options" => myprod.original_state[:options].first['name']}
+        detail_product_collection.push(temp_hash2)
+
+      end
       
 
     end
+
+    detail_product_collection.each do |dpc|
+      puts "*************"
+      puts dpc.inspect
+      puts "************"
+    end
+    puts "email = #{myemail}"
+
+    File.delete('ellie_checklist_rollover.csv') if File.exist?('ellie_checklist_rollover.csv')
+
+    
+
+    column_header = ["product_title", "product_id", "variant_id", "sku", "price", "product_collection", "published_at", "product_count_match"]
+        CSV.open('ellie_checklist_rollover.csv','a+', :write_headers=> true, :headers => column_header) do |hdr|
+            column_header = nil
+            product_array.each do |pa|
+              csv_data_out = [pa['product_title'], pa["product_id"], pa['variant_id'], pa['sku'], pa['price'], pa['product_collection'], pa['published_at'], pa['product_match'] ]
+              hdr << csv_data_out
+
+            end
+            hdr << ["---------- Detail Product Collection info ------------"]
+            hdr << ["product_collection", "product_name", "product_type", "options"]
+            detail_product_collection.each do |dpc|
+              csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['options']]
+              hdr << csv_data_out
+            end
+
+        end
+
+    
+
+
+
+
+    mystring = Base64.strict_encode64(File.open('ellie_checklist_rollover.csv', "rb").read)
+
+    mail = SendGrid::Mail.new
+    mail.from = Email.new(email: 'test@example.com')
+    mail.subject = 'Ellie.com Rollover Checklist Report'
+    personalization = Personalization.new
+    personalization.add_to(Email.new(email: myemail, name: 'Floyd Wallace'))
+    personalization.add_to(Email.new(email: 'flwallace99@gmail.com', name: 'Floyd Wallace'))
+    personalization.subject = 'Here is the Ellie.com Rollover Checklist'
+    mail.add_personalization(personalization)
+    mail.add_content(Content.new(type: 'text/plain', value: 'See Attached CSV for Rollover Checklist'))
+    attachment = Attachment.new
+    attachment.content =  mystring
+    attachment.type = 'application/csv'
+    #attachment2.content = 'TG9'
+    attachment.filename = 'ellie_checklist_rollover.csv'
+    attachment.disposition = 'attachment'
+    attachment.content_id = 'Ellie Rollover Checklist Report'
+    mail.add_attachment(attachment)
+
+    mail.reply_to = Email.new(email: 'test@example.com')
+
+    # puts JSON.pretty_generate(mail.to_json)
+    puts mail.to_json
+
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    response = sg.client.mail._('send').post(request_body: mail.to_json)
+    puts response.status_code
+    puts response.body
+    puts response.headers
+
+
+
+    puts "All done"
 
     end
 
