@@ -6,6 +6,7 @@ require 'shopify_api'
 # require 'sinatra/activerecord'
 #require 'logger'
 require 'sendgrid-ruby'
+require 'sinatra'
 
 
 Dotenv.load
@@ -64,8 +65,15 @@ module Checklist
 
       puts "We have #{product_count.body['count']} products"
 
-      my_today = DateTime.now.strftime("%B %Y")
+
+      my_start_month_plus = Date.today 
+      my_start_month_plus = my_start_month_plus >> 1
+
+      my_today = my_start_month_plus.strftime("%B %Y")
       monthly_collection = "#{my_today} Collections"
+
+      #puts "monthly_collection = #{monthly_collection}"
+      #exit
 
       
 
@@ -95,9 +103,9 @@ module Checklist
         puts "-----"
         #puts "product_id: #{myp.original_state[:id]} product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}"
         num_products  += 1
-        # puts "***************"
-        # puts myp.inspect
-        # puts "**************"
+         puts "***************"
+         puts myp.inspect
+         puts "**************"
 
         mymeta = ShopifyAPI::Metafield.all(resource: 'products', resource_id: myp.original_state[:id], namespace: 'ellie_order_info', fields: 'value')
         # #note, it could be just []
@@ -109,12 +117,21 @@ module Checklist
         else
           my_meta_str = nil
         end
-  
-        puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, published_at: #{myp.original_state[:published_at]}}"
 
-        my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "published_at" => myp.original_state[:published_at]}
+        slugified_title = myp.original_state[:title].parameterize
+
+        handle_ok = false
+        if slugified_title == myp.original_state[:handle]
+          handle_ok = true
+        end
+  
+        puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}"
+
+        my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok}
         
         product_array.push(my_hash)
+
+        exit
   
       end
 
@@ -139,10 +156,17 @@ module Checklist
           else
             my_meta_str = nil
           end
+
+          slugified_title = myp.original_state[:title].parameterize
+
+          handle_ok = false
+          if slugified_title == myp.original_state[:handle]
+            handle_ok = true
+          end
   
-          puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, published_at: #{myp.original_state[:published_at]}}"
-          
-          my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "published_at" => myp.original_state[:published_at]}
+          puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}"
+
+          my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok}
         
           product_array.push(my_hash)
           
@@ -206,11 +230,11 @@ module Checklist
 
     
 
-    column_header = ["product_title", "product_id", "variant_id", "sku", "price", "product_collection", "published_at", "product_count_match"]
+    column_header = ["product_title", "product_id", "variant_id", "sku", "price", "product_collection", "published_at", "product_count_match", "handle", "slugified_title", "handle_ok"]
         CSV.open('ellie_checklist_rollover.csv','a+', :write_headers=> true, :headers => column_header) do |hdr|
             column_header = nil
             product_array.each do |pa|
-              csv_data_out = [pa['product_title'], pa["product_id"], pa['variant_id'], pa['sku'], pa['price'], pa['product_collection'], pa['published_at'], pa['product_match'] ]
+              csv_data_out = [pa['product_title'], pa["product_id"], pa['variant_id'], pa['sku'], pa['price'], pa['product_collection'], pa['published_at'], pa['product_match'], pa["handle"], pa["slugified_title"], pa["handle_ok"] ]
               hdr << csv_data_out
 
             end

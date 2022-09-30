@@ -1,7 +1,7 @@
 require 'dotenv'
-require 'active_record'
+#require 'active_record'
 require 'shopify_api'
-require 'sinatra/activerecord/rake'
+#require 'sinatra/activerecord/rake'
 
 require_relative 'checklist'
 
