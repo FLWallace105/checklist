@@ -131,7 +131,7 @@ module Checklist
         
         product_array.push(my_hash)
 
-        exit
+        
   
       end
 
