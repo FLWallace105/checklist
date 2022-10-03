@@ -67,7 +67,7 @@ module Checklist
 
 
       my_start_month_plus = Date.today 
-      #my_start_month_plus = my_start_month_plus >> 1
+      my_start_month_plus = my_start_month_plus >> 1
 
       my_today = my_start_month_plus.strftime("%B %Y")
       monthly_collection = "#{my_today} Collections"
