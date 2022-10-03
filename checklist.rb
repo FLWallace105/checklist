@@ -67,7 +67,7 @@ module Checklist
 
 
       my_start_month_plus = Date.today 
-      my_start_month_plus = my_start_month_plus >> 1
+      #my_start_month_plus = my_start_month_plus >> 1
 
       my_today = my_start_month_plus.strftime("%B %Y")
       monthly_collection = "#{my_today} Collections"
@@ -241,7 +241,12 @@ module Checklist
             hdr << ["---------- Detail Product Collection info ------------"]
             hdr << ["product_collection", "product_name", "product_type", "options"]
             detail_product_collection.each do |dpc|
-              csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['options']]
+              if dpc["product_type"] =~ /bottom/i
+                csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['options'], "< ----- BADDDD Bottoms will break this collection"]
+              else
+                csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['options']]
+              end
+              
               hdr << csv_data_out
             end
 
