@@ -70,7 +70,9 @@ module Checklist
       my_start_month_plus = my_start_month_plus >> 1
 
       my_today = my_start_month_plus.strftime("%B %Y")
-      monthly_collection = "#{my_today} Collections"
+      #monthly_collection = "#{my_today} Collections"
+      
+      monthly_collection = "December 2022 Collections"
 
       #puts "monthly_collection = #{monthly_collection}"
       #exit
@@ -124,10 +126,17 @@ module Checklist
         if slugified_title == myp.original_state[:handle]
           handle_ok = true
         end
-  
-        puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}"
 
-        my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok}
+        title_equals_collection = false
+        if myp.original_state[:title] == my_meta_str
+          title_equals_collection = true
+        else
+          title_equals_collection = false
+        end
+  
+        puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, title_equals_collection: #{title_equals_collection}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}, template_suffix: #{myp.original_state[:template_suffix]}"
+
+        my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "title_equals_collection" => title_equals_collection, "published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => myp.original_state[:template_suffix]}
         
         product_array.push(my_hash)
 
@@ -163,10 +172,17 @@ module Checklist
           if slugified_title == myp.original_state[:handle]
             handle_ok = true
           end
-  
-          puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}"
 
-          my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok}
+          title_equals_collection = false
+          if myp.original_state[:title] == my_meta_str
+            title_equals_collection = true
+          else
+            title_equals_collection = false
+          end
+  
+          puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, title_equals_collection: #{title_equals_collection}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}, template_suffix: #{myp.original_state[:template_suffix]}"
+
+          my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "title_equals_collection" => title_equals_collection,"published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => myp.original_state[:template_suffix]}
         
           product_array.push(my_hash)
           
@@ -177,6 +193,8 @@ module Checklist
     end
 
     detail_product_collection = Array.new
+    found_accessory_array = Array.new
+    found_equipment_array = Array.new
 
     product_array.each do |myp|
       puts "-------------"
@@ -206,21 +224,62 @@ module Checklist
 
       next if  myp['product_collection'] =~ /ellie\spick/i
       my_products = ShopifyAPI::Product.all( collection_id: collection_id,  limit: 250 )
+      found_accessory_hash = {"product_collection" => myp['product_collection'], "num_found" => 0}
+      found_equipment_hash = {"product_collection" => myp['product_collection'], "num_found" => 0}
 
       my_products.each do |myprod|
         puts "-------------"
         puts myprod.inspect
         puts "-------------"
-        temp_hash2 = {"product_collection" => myp['product_collection'], "product_name" => myprod.original_state[:title], "product_type" => myprod.original_state[:product_type], "options" => myprod.original_state[:options].first['name']}
+        
+        if myp['product_collection'] =~ /5\sitem/i
+          if myprod.original_state[:product_type] == "Accessories" 
+            puts "Found Accessory = TRUE #{myprod.original_state[:product_type]}"
+            
+            found_accessory_hash['num_found'] = found_accessory_hash['num_found'] + 1
+          else
+            #nothing
+          end
+          if myprod.original_state[:product_type] == "Equipment"
+            
+            found_equipment_hash['num_found'] = found_equipment_hash['num_found'] + 1
+            puts "Found Equipment = TRUE #{myprod.original_state[:product_type]}"
+            
+          else
+            #nothing
+          end
+
+        end
+        temp_hash2 = {"product_collection" => myp['product_collection'], "product_name" => myprod.original_state[:title], "product_type" => myprod.original_state[:product_type], "options" => myprod.original_state[:options].first['name'], "template_suffix" =>  myprod.original_state[:template_suffix]}
         detail_product_collection.push(temp_hash2)
+        
 
       end
+      found_accessory_array.push(found_accessory_hash)
+      found_equipment_array.push(found_equipment_hash)
       
 
     end
 
     detail_product_collection.each do |dpc|
       puts "*************"
+      
+      if dpc['product_collection'] =~ /5\sitem/i 
+        my_found_five = found_accessory_array.select {|x| x['product_collection'] == dpc['product_collection']}
+        puts "my_found_five = #{my_found_five.inspect}"
+        accessory_found = my_found_five.first['num_found']
+        my_found_five_eq = found_equipment_array.select { |x| x['product_collection'] == dpc['product_collection']}
+        equipment_found = my_found_five_eq.first['num_found']
+        if dpc['product_type'] == 'Equipment'
+          dpc['equipment_found'] = equipment_found
+        end
+        if dpc['product_type'] == 'Accessories'
+          dpc['accessories_found'] = accessory_found
+        end
+
+
+        #dpc['five_item_accessories_equipment_ok'] = "funky"
+      end
       puts dpc.inspect
       puts "************"
     end
@@ -230,21 +289,35 @@ module Checklist
 
     
 
-    column_header = ["product_title", "product_id", "variant_id", "sku", "price", "product_collection", "published_at", "product_count_match", "handle", "slugified_title", "handle_ok"]
+    column_header = ["product_title", "product_id", "variant_id", "sku", "price", "product_collection", "title_equals_collection", "published_at", "product_count_match", "handle", "slugified_title", "handle_ok", "template_suffix"]
         CSV.open('ellie_checklist_rollover.csv','a+', :write_headers=> true, :headers => column_header) do |hdr|
             column_header = nil
             product_array.each do |pa|
-              csv_data_out = [pa['product_title'], pa["product_id"], pa['variant_id'], pa['sku'], pa['price'], pa['product_collection'], pa['published_at'], pa['product_match'], pa["handle"], pa["slugified_title"], pa["handle_ok"] ]
+              csv_data_out = [pa['product_title'], pa["product_id"], pa['variant_id'], pa['sku'], pa['price'], pa['product_collection'], pa['title_equals_collection'], pa['published_at'], pa['product_match'], pa["handle"], pa["slugified_title"], pa["handle_ok"], pa["template_suffix"] ]
               hdr << csv_data_out
 
             end
             hdr << ["---------- Detail Product Collection info ------------"]
-            hdr << ["product_collection", "product_name", "product_type", "options"]
+            hdr << ["product_collection", "product_name", "product_type", "template_suffix", "options", "equipment_found", "accessories_found" ]
             detail_product_collection.each do |dpc|
               if dpc["product_type"] =~ /bottom/i
-                csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['options'], "< ----- BADDDD Bottoms will break this collection"]
+                csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], "< ----- BADDDD Bottoms will break this collection"]
+              elsif dpc["product_collection"] =~ /5\sitem/i && dpc["product_type"] == "Accessories"
+                if dpc['accessories_found'] != 1
+                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['accessories_found'], "<---------- ERROR Must be only 1"]
+                else
+                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['accessories_found']]
+                end
+                
+              elsif dpc["product_collection"] =~ /5\sitem/i && dpc["product_type"] == "Equipment"
+                if dpc['equipment_found'] != 1
+                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['equipment_found'], "<---------- Error must be only 1"]
+                else
+                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['equipment_found']]
+                end
+                
               else
-                csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['options']]
+                csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options']]
               end
               
               hdr << csv_data_out
