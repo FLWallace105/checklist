@@ -1,240 +1,188 @@
-product_title,product_id,variant_id,sku,price,product_collection,title_equals_collection,published_at,product_count_match,handle,slugified_title,handle_ok,template_suffix
-Apres Chic - 2 Items,6906430718010,39728463839290,719408400700,44.95,Apres Chic - 2 Items,true,2022-09-23T11:12:33-07:00,true,apres-chic-2-items,apres-chic-2-items,true,current-collection-may2018
-Apres Chic - 3 Items,6906431176762,39728464789562,719408400717,49.95,Apres Chic - 3 Items,true,2022-09-23T11:14:25-07:00,true,apres-chic-3-items,apres-chic-3-items,true,current-collection-may2018
-Apres Chic - 5 Items,6906433404986,39728465870906,719408400724,59.95,Apres Chic - 5 Items,true,2022-09-23T11:20:14-07:00,true,apres-chic-5-items,apres-chic-5-items,true,current-collection-may2018
-Blue Granite - 2 Items,6883158196282,39700897103930,719408369380,44.95,Blue Granite - 2 Items,true,2022-08-25T11:15:02-07:00,true,blue-granite-2-items,blue-granite-2-items,true,current-collection-may2018
-Blue Granite - 3 Items,6883158392890,39700897693754,719408369397,49.95,Blue Granite - 3 Items,true,2022-08-25T11:15:57-07:00,true,blue-granite-3-items,blue-granite-3-items,true,current-collection-may2018
-Blue Granite - 5 Items,6883159212090,39700898349114,719408369403,54.95,Blue Granite - 5 Items,true,2022-08-25T11:18:00-07:00,true,blue-granite-5-items,blue-granite-5-items,true,current-collection-may2018
-Blue Sky - 2 Items,6931706642490,39756673548346,719408423013,44.95,Blue Sky - 2 Items,true,2022-10-21T10:38:36-07:00,true,blue-sky-2-items,blue-sky-2-items,true,current-collection-may2018
-Blue Sky - 3 Items,6931707625530,39756675350586,719408423020,49.95,Blue Sky - 3 Items,true,2022-10-21T10:40:10-07:00,true,blue-sky-3-items,blue-sky-3-items,true,current-collection-may2018
-Blue Sky - 5 Items,6931708313658,39756675547194,719408423037,59.95,Blue Sky - 5 Items,true,2022-10-21T10:42:09-07:00,true,blue-sky-5-items,blue-sky-5-items,true,current-collection-may2018
-Boss Gloss - 2 Items,6692327686202,39484776710202,745934962719,44.95,Boss Gloss - 2 Items,true,,true,boss-gloss-2-items,boss-gloss-2-items,true,current-collection-may2018
-Boss Gloss - 3 Items,6692327817274,39484776775738,745934962726,49.95,Boss Gloss - 3 Items,true,,true,boss-gloss-3-items,boss-gloss-3-items,true,current-collection-may2018
-Boss Gloss - 5 Items,6692330963002,39484794044474,745934962733,59.95,Boss Gloss - 5 Items,true,,true,boss-gloss-5-items,boss-gloss-5-items,true,current-collection-may2018
+product_title,product_id,variant_id,sku,price,product_collection,title_equals_collection,published_at,product_count_match,handle,slugified_title,handle_ok,template_suffix,product_status
+Black Tie - 2 Items,6744228724794,39544456511546,719408171600,44.95,Black Tie - 2 Items,true,2022-02-18T13:36:23-08:00,true,black-tie-2-items,black-tie-2-items,true,current-collection-may2018
+Black Tie - 3 Items,6744229380154,39544457920570,719408171617,49.95,Black Tie - 3 Items,true,2022-02-18T13:37:40-08:00,true,black-tie-3-items,black-tie-3-items,true,current-collection-may2018
+Black Tie - 5 Items,6744232820794,39544463687738,719408171624,59.95,Black Tie - 5 Items,true,2022-02-18T13:42:44-08:00,true,black-tie-5-items,black-tie-5-items,true,current-collection-may2018
+Blue Moon - 2 Items,6975942524986,39798978936890,719408441338,44.95,Blue Moon - 2 Items,true,2022-12-07T10:46:07-08:00,true,blue-moon-2-items,blue-moon-2-items,true,current-collection-may2018
+Blue Moon - 3 Items,6975944163386,39798979493946,719408441345,49.95,Blue Moon - 3 Items,true,2022-12-07T10:48:34-08:00,true,blue-moon-3-items,blue-moon-3-items,true,current-collection-may2018
+Blue Moon - 5 Items,6975944720442,39798979821626,719408441352,59.95,Blue Moon - 5 Items,true,2022-12-07T10:49:30-08:00,true,blue-moon-5-items,blue-moon-5-items,true,current-collection-may2018
+Cherry Blossom - 2 Items,6996870266938,39819142463546,719408471083,44.95,Cherry Blossom - 2 Items,true,2023-01-11T16:51:21-08:00,true,cherry-blossom-2-items,cherry-blossom-2-items,true,current-collection-may2018
+Cherry Blossom - 3 Items,6996870463546,39819142529082,719408471090,49.95,Cherry Blossom - 3 Items,true,2023-01-11T16:51:44-08:00,true,cherry-blossom-3-items,cherry-blossom-3-items,true,current-collection-may2018
+Cherry Blossom - 5 Items,6996870594618,39819142856762,719408471106,59.95,Cherry Blossom - 5 Items,true,2023-01-11T16:52:20-08:00,true,cherry-blossom-5-items,cherry-blossom-5-items,true,current-collection-may2018
 Ellie Picks - 2 Items,4399742615610,31328301023290,79999999997,44.95,Ellie Picks - 2 Items,true,2020-02-17T12:37:46-08:00,false,ellie-picks-2-items,ellie-picks-2-items,true,current-collection-may2018
 Ellie Picks - 3 Items,4399742746682,31328301121594,79999999999,49.95,Ellie Picks - 3 Items,true,2020-02-17T16:49:38-08:00,false,ellie-picks-3-items,ellie-picks-3-items,true,current-collection-may2018
 Ellie Picks - 5 Items,4399742910522,31328301482042,79999999998,54.95,Ellie Picks - 5 Items,true,2020-02-17T16:50:53-08:00,false,ellie-picks-5-items,ellie-picks-5-items,true,current-collection-may2018
-Honeycrisp - 2 Items,6671572992058,39454508384314,745934898193,44.95,Honeycrisp - 2 Items,true,2021-10-19T13:49:54-07:00,true,honeycrisp-2-items,honeycrisp-2-items,true,current-collection-may2018
-Honeycrisp - 3 Items,6671575089210,39454510415930,745934898209,49.95,Honeycrisp - 3 Items,true,2021-10-19T13:54:33-07:00,true,honeycrisp-3-items,honeycrisp-3-items,true,current-collection-may2018
-Honeycrisp - 5 Items,6671577972794,39454512414778,745934898216,59.95,Honeycrisp - 5 Items,true,2021-10-19T13:59:54-07:00,true,honeycrisp-5-items,honeycrisp-5-items,true,current-collection-may2018
-Main Attraction - 2 Items,6746322960442,39546543439930,719408119855,44.95,Main Attraction - 2 Items,true,2022-02-21T08:53:59-08:00,true,main-attraction-2-items,main-attraction-2-items,true,current-collection-may2018
-Main Attraction - 3 Items,6746325319738,39546546716730,719408119862,49.95,Main Attraction - 3 Items,true,2022-02-21T08:59:41-08:00,true,main-attraction-3-items,main-attraction-3-items,true,current-collection-may2018
-Main Attraction - 5 Items,6746330988602,39546553368634,719408119879,59.95,Main Attraction - 5 Items,true,2022-02-21T09:14:02-08:00,true,main-attraction-5-items,main-attraction-5-items,true,current-collection-may2018
-North Pole - 2 Items,6949874663482,39777574944826,719408435757,44.95,North Pole - 2 Items,true,2022-11-11T09:19:02-08:00,true,north-pole-2-items,north-pole-2-items,true,current-collection-may2018
-North Pole - 3 Items,6949875220538,39777575665722,719408435764,49.95,North Pole - 3 Items,true,2022-11-11T09:20:36-08:00,true,north-pole-3-items,north-pole-3-items,true,current-collection-may2018
-North Pole - 5 Items,6949876203578,39777575993402,719408435771,59.95,North Pole - 5 Items,true,2022-11-11T09:22:30-08:00,true,north-pole-5-items,north-pole-5-items,true,current-collection-may2018
-Opposites Attract - 2 Items,6931709001786,39756676530234,719408423044,44.95,Opposites Attract - 2 Items,true,2022-10-21T10:43:48-07:00,true,opposites-attract-2-items,opposites-attract-2-items,true,current-collection-may2018
-Opposites Attract - 3 Items,6931709952058,39756677972026,719408423051,49.95,Opposites Attract - 3 Items,true,2022-10-21T10:45:32-07:00,true,opposites-attract-3-items,opposites-attract-3-items,true,current-collection-may2018
-Opposites Attract - 5 Items,6931710902330,39756678234170,719408423068,59.95,Opposites Attract - 5 Items,true,2022-10-21T10:47:43-07:00,true,opposites-attract-5-items,opposites-attract-5-items,true,current-collection-may2018
+Floral Flow - 2 Items,6976116457530,39799246291002,719408441420,44.95,Floral Flow - 2 Items,true,2022-12-07T14:35:05-08:00,true,floral-flow-2-items,floral-flow-2-items,true,current-collection-may2018
+Floral Flow - 3 Items,6976116850746,39799246356538,719408441437,49.95,Floral Flow - 3 Items,true,2022-12-07T14:36:02-08:00,true,floral-flow-3-items,floral-flow-3-items,true,current-collection-may2018
+Floral Flow - 5 Items,6976117669946,39799246651450,719408441444,59.95,Floral Flow - 5 Items,true,2022-12-07T14:37:52-08:00,true,floral-flow-5-items,floral-flow-5-items,true,current-collection-may2018
+Heather Weather - 2 Items,6996872331322,39819143905338,719408471144,44.95,Heather Weather - 2 Items,true,2023-01-11T16:58:10-08:00,true,heather-weather-2-items,heather-weather-2-items,true,current-collection-may2018
+Heather Weather - 3 Items,6996872560698,39819144003642,719408471151,49.95,Heather Weather - 3 Items,true,2023-01-11T16:58:51-08:00,true,heather-weather-3-items,heather-weather-3-items,true,current-collection-may2018
+Heather Weather - 5 Items,6996872790074,39819144134714,719408471168,59.95,Heather Weather - 5 Items,true,2023-01-11T16:59:47-08:00,true,heather-weather-5-items,heather-weather-5-items,true,current-collection-may2018
+Make Waves - 2 Items,6996869120058,39819141906490,719408471052,44.95,Make Waves - 2 Items,true,2023-01-11T16:47:05-08:00,true,make-waves-2-items,make-waves-2-items,true,current-collection-may2018
+Make Waves - 3 Items,6996869611578,39819141939258,719408471069,49.95,Make Waves - 3 Items,true,2023-01-11T16:48:50-08:00,true,make-waves-3-items,make-waves-3-items,true,current-collection-may2018
+Make Waves - 5 Items,6996869972026,39819142398010,719408471076,59.95,Make Waves - 5 Items,true,2023-01-11T16:50:34-08:00,true,make-waves-5-items,make-waves-5-items,true,current-collection-may2018
 Pinot Noir - 2 Items,6949877809210,39777578188858,719408435788,44.95,Pinot Noir - 2 Items,true,2022-11-11T09:24:39-08:00,true,pinot-noir-2-items,pinot-noir-2-items,true,current-collection-may2018
 Pinot Noir - 3 Items,6949878464570,39777578713146,719408435795,49.95,Pinot Noir - 3 Items,true,2022-11-11T09:26:10-08:00,true,pinot-noir-3-items,pinot-noir-3-items,true,current-collection-may2018
 Pinot Noir - 5 Items,6949879251002,39777580318778,719408435801,59.95,Pinot Noir - 5 Items,true,2022-11-11T09:27:50-08:00,true,pinot-noir-5-items,pinot-noir-5-items,true,current-collection-may2018
-Polar Flair - 2 Items,6931052036154,39754548576314,719408422955,44.95,Polar Flair - 2 Items,true,2022-10-20T16:32:32-07:00,true,polar-flair-2-items,polar-flair-2-items,true,current-collection-may2018
-Polar Flair - 3 Items,6931054559290,39754549624890,719408422962,49.95,Polar Flair - 3 Items,true,2022-10-20T16:38:03-07:00,true,polar-flair-3-items,polar-flair-3-items,true,current-collection-may2018
-Polar Flair - 5 Items,6931055640634,39754549887034,719408422979,59.95,Polar Flair - 5 Items,true,2022-10-20T16:40:31-07:00,true,polar-flair-5-items,polar-flair-5-items,true,current-collection-may2018
-Port Authority - 2 Items,6931711950906,39756680462394,719408423075,44.95,Port Authority - 2 Items,true,2022-10-21T10:50:00-07:00,true,port-authority-2-items,port-authority-2-items,true,current-collection-may2018
-Port Authority - 3 Items,6931715326010,39756683378746,719408423082,49.95,Port Authority - 3 Items,true,2022-10-21T10:56:20-07:00,true,port-authority-3-items,port-authority-3-items,true,current-collection-may2018
-Port Authority - 5 Items,6931716636730,39756684001338,719408423099,59.95,Port Authority - 5 Items,true,2022-10-21T10:58:50-07:00,true,port-authority-5-items,port-authority-5-items,true,current-collection-may2018
 Ride Or Dye - 2 Items,6949870534714,39777572913210,719408433272,44.95,Ride Or Dye - 2 Items,true,2022-11-11T09:10:42-08:00,true,ride-or-dye-2-items,ride-or-dye-2-items,true,current-collection-may2018
 Ride Or Dye - 3 Items,6949873025082,39777573797946,719408433289,49.95,Ride Or Dye - 3 Items,true,2022-11-11T09:16:01-08:00,true,ride-or-dye-3-items,ride-or-dye-3-items,true,current-collection-may2018
 Ride Or Dye - 5 Items,6949873778746,39777574518842,719408435740,59.95,Ride Or Dye - 5 Items,true,2022-11-11T09:17:24-08:00,true,ride-or-dye-5-items,ride-or-dye-5-items,true,current-collection-may2018
-Rose To The Top - 2 items,6949861589050,39777558036538,719408384109,44.95,Rose To The Top - 2 Items,false,2022-11-11T08:52:07-08:00,true,rose-to-the-top-2-items,rose-to-the-top-2-items,true,current-collection-may2018
-Rose To The Top - 3 Items,6949865586746,39777566326842,719408384116,49.95,Rose To The Top - 3 Items,true,2022-11-11T09:00:25-08:00,true,rose-to-the-top-3-items,rose-to-the-top-3-items,true,current-collection-may2018
-Rose To The Top - 5 Items,6949866111034,39777566490682,719408433234,59.95,Rose To The Top - 5 Items,true,2022-11-11T09:02:04-08:00,true,rose-to-the-top-5-items,rose-to-the-top-5-items,true,current-collection-may2018
+Ripple Effect - 2 Items,6996871446586,39819143381050,719408471113,44.95,Ripple Effect - 2 Items,true,2023-01-11T16:55:21-08:00,true,ripple-effect-2-items,ripple-effect-2-items,true,current-collection-may2018
+Ripple Effect - 3 Items,6996871577658,39819143643194,719408471120,49.95,Ripple Effect - 3 Items,true,2023-01-11T16:55:40-08:00,true,ripple-effect-3-items,ripple-effect-3-items,true,current-collection-may2018
+Ripple Effect - 5 Items,6996872003642,39819143839802,719408471137,59.95,Ripple Effect - 5 Items,true,2023-01-11T16:56:15-08:00,true,ripple-effect-5-items,ripple-effect-5-items,true,current-collection-may2018
+Rosy Glow - 2 Items,6976121438266,39799251828794,719408441451,44.95,Rosy Glow - 2 Items,true,2022-12-07T14:45:08-08:00,true,rosy-glow-2-items,rosy-glow-2-items,true,current-collection-may2018
+Rosy Glow - 3 Items,6976121569338,39799252516922,719408441468,49.95,Rosy Glow - 3 Items,true,2022-12-07T14:46:03-08:00,true,rosy-glow-3-items,rosy-glow-3-items,true,current-collection-may2018
+Rosy Glow - 5 Items,6976122191930,39799252877370,719408441475,59.95,Rosy Glow - 5 Items,true,2022-12-07T14:47:04-08:00,true,rosy-glow-5-items,rosy-glow-5-items,true,current-collection-may2018
+Slick Moves - 2 Items,6975947735098,39798982213690,719408441369,44.95,Slick Moves - 2 Items,true,2022-12-07T10:54:29-08:00,true,slick-moves-2-items,slick-moves-2-items,true,current-collection-may2018
+Slick Moves - 3 Items,6975948554298,39798982279226,719408441376,49.95,Slick Moves - 3 Items,true,2022-12-07T10:56:07-08:00,true,slick-moves-3-items,slick-moves-3-items,true,current-collection-may2018
+Slick Moves - 5 Items,6975949045818,39798982869050,719408441383,59.95,Slick Moves - 5 Items,true,2022-12-07T10:56:45-08:00,true,slick-moves-5-items,slick-moves-5-items,true,current-collection-may2018
 Sparrow - 2 Items,6906438090810,39728468033594,719408400823,44.95,Sparrow - 2 Items,true,2022-09-23T11:33:35-07:00,true,sparrow-2-items,sparrow-2-items,true,current-collection-may2018
 Sparrow - 3 Items,6906438385722,39728468099130,719408400830,49.95,Sparrow - 3 Items,true,2022-09-23T11:34:43-07:00,true,sparrow-3-items,sparrow-3-items,true,current-collection-may2018
 Sparrow - 5 Items,6906438615098,39728468164666,719408400847,59.95,Sparrow - 5 Items,true,2022-09-23T11:35:44-07:00,true,sparrow-5-items,sparrow-5-items,true,current-collection-may2018
-Specks Appeal - 2 Items,6949880627258,39777584873530,719408435818,44.95,Specks Appeal - 2 Items,true,2022-11-11T09:29:40-08:00,true,specks-appeal-2-items,specks-appeal-2-items,true,current-collection-may2018
-Specks Appeal - 3 Items,6949881020474,39777585102906,719408435825,49.95,Specks Appeal - 3 Items,true,2022-11-11T09:31:01-08:00,true,specks-appeal-3-items,specks-appeal-3-items,true,current-collection-may2018
-Specks Appeal - 5 Items,6949882298426,39777585922106,719408435832,59.95,Specks Appeal - 5 Items,true,2022-11-11T09:32:32-08:00,true,specks-appeal-5-items,specks-appeal-5-items,true,current-collection-may2018
-Spiced Plum - 2 Items,6671568666682,39454504779834,745934898223,44.95,Spiced Plum - 2 Items,true,2021-10-19T13:41:16-07:00,true,spiced-plum-2-items,spiced-plum-2-items,true,current-collection-may2018
-Spiced Plum - 3 Items,6671570599994,39454506057786,745934898230,49.95,Spiced Plum - 3 Items,true,2021-10-19T13:44:21-07:00,true,spiced-plum-3-items,spiced-plum-3-items,true,current-collection-may2018
-Spiced Plum - 5 Items,6671572533306,39454508023866,745934898247,59.95,Spiced Plum - 5 Items,true,2021-10-19T13:48:05-07:00,true,spiced-plum-5-items,spiced-plum-5-items,true,current-collection-may2018
 Stardust - 2 Items,6691774332986,39483992047674,745934956954,44.95,Stardust - 2 Items,true,2021-11-23T16:39:23-08:00,true,stardust-2-items,stardust-2-items,true,current-collection-may2018
 Stardust - 3 Items,6692236820538,39484561555514,745934956961,49.95,Stardust - 3 Items,true,2021-11-24T09:54:43-08:00,true,stardust-3-items,stardust-3-items,true,current-collection-may2018
 Stardust - 5 Items,6692290920506,39484688302138,745934959160,59.95,Stardust - 5 Items,true,2021-11-24T12:04:27-08:00,true,stardust-5-items,stardust-5-items,true,current-collection-may2018
-Tree Hugger - 2 Items,6949867290682,39777567277114,719408433241,44.95,Tree Hugger - 2 Items,true,2022-11-11T09:03:46-08:00,true,tree-hugger-2-items,tree-hugger-2-items,true,current-collection-may2018
-Tree Hugger - 3 Items,6949868470330,39777568489530,719408433258,49.95,Tree Hugger - 3 Items,true,2022-11-11T09:05:50-08:00,true,tree-hugger-3-items,tree-hugger-3-items,true,current-collection-may2018
-Tree Hugger - 5 Items,6949869125690,39777569308730,719408433265,59.95,Tree Hugger - 5 Items,true,2022-11-11T09:07:23-08:00,true,tree-hugger-5-items,tree-hugger-5-items,true,current-collection-may2018
+Sugar And Spice - 2 Items,6931693109306,39756655460410,719408422986,44.95,Sugar And Spice - 2 Items,true,2022-10-21T10:09:44-07:00,true,sugar-and-spice-2-items,sugar-and-spice-2-items,true,current-collection-may2018
+Sugar And Spice - 3 Items,6931704545338,39756671615034,719408422993,49.95,Sugar And Spice - 3 Items,true,2022-10-21T10:33:35-07:00,true,sugar-and-spice-3-items,sugar-and-spice-3-items,true,current-collection-may2018
+Sugar And Spice - 5 Items,6931705528378,39756672204858,719408423006,59.95,Sugar And Spice - 5 Items,true,2022-10-21T10:36:08-07:00,true,sugar-and-spice-5-items,sugar-and-spice-5-items,true,current-collection-may2018
 ---------- Detail Product Collection info ------------
-product_collection,product_name,product_type,template_suffix,options,equipment_found,accessories_found
-Apres Chic - 2 Items,Eclipse Legging (Black),Leggings,not-for-sale,Size
-Apres Chic - 2 Items,Rudy Rib Tank (White),Tops,not-for-sale,Size
-Apres Chic - 3 Items,Eclipse Legging (Black),Leggings,not-for-sale,Size
-Apres Chic - 3 Items,Furry Fleece Jacket (Quiet Grey),sports-jacket,not-for-sale,Size
-Apres Chic - 3 Items,Rudy Rib Tank (White),Tops,not-for-sale,Size
-Apres Chic - 5 Items,Eclipse Legging (Black),Leggings,not-for-sale,Size
-Apres Chic - 5 Items,Furry Fleece Jacket (Quiet Grey),sports-jacket,not-for-sale,Size
-Apres Chic - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Apres Chic - 5 Items,Rudy Rib Tank (White),Tops,not-for-sale,Size
-Apres Chic - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Blue Granite - 2 Items,Jade Legging (Outer Space),Leggings,not-for-sale,Size
-Blue Granite - 2 Items,Sonic Long Sleeve (H. Blue Granite),Tops,not-for-sale,Size
-Blue Granite - 3 Items,Jade Legging (Outer Space),Leggings,not-for-sale,Size
-Blue Granite - 3 Items,Lily Sport Bra (Outer Space),Sports Bra,not-for-sale,Size
-Blue Granite - 3 Items,Sonic Long Sleeve (H. Blue Granite),Tops,not-for-sale,Size
-Blue Granite - 5 Items,Jade Legging (Outer Space),Leggings,not-for-sale,Size
-Blue Granite - 5 Items,Lily Sport Bra (Outer Space),Sports Bra,not-for-sale,Size
-Blue Granite - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Blue Granite - 5 Items,Sonic Long Sleeve (H. Blue Granite),Tops,not-for-sale,Size
-Blue Granite - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Blue Sky - 2 Items,Kallie Legging (Smoke Blue),Leggings,not-for-sale,Size
-Blue Sky - 2 Items,Leah Hoodie (H. Smoke Blue),Tops,not-for-sale,Size
-Blue Sky - 3 Items,Kallie Legging (Smoke Blue),Leggings,not-for-sale,Size
-Blue Sky - 3 Items,Kristie Sports Bra (Smoked Blue),Sports Bra,not-for-sale,Size
-Blue Sky - 3 Items,Leah Hoodie (H. Smoke Blue),Tops,not-for-sale,Size
-Blue Sky - 5 Items,Kallie Legging (Smoke Blue),Leggings,not-for-sale,Size
-Blue Sky - 5 Items,Kristie Sports Bra (Smoked Blue),Sports Bra,not-for-sale,Size
-Blue Sky - 5 Items,Leah Hoodie (H. Smoke Blue),Tops,not-for-sale,Size
-Blue Sky - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Blue Sky - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Boss Gloss - 2 Items,Shine 27 Inch Legging (Black),Leggings,not-for-sale,Size
-Boss Gloss - 2 Items,Shine 27 Inch Legging (Black),Leggings,not-for-sale,Size
-Boss Gloss - 3 Items,Orabell Seamless Long Bra (Black),Sports Bra,not-for-sale,Size
-Boss Gloss - 3 Items,Shine 27 Inch Legging (Black),Leggings,not-for-sale,Size
-Boss Gloss - 3 Items,Shine 27 Inch Legging (Black),Leggings,not-for-sale,Size
-Boss Gloss - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Boss Gloss - 5 Items,Orabell Seamless Long Bra (Black),Sports Bra,not-for-sale,Size
-Boss Gloss - 5 Items,Shine 27 Inch Legging (Black),Leggings,not-for-sale,Size
-Boss Gloss - 5 Items,Shine 27 Inch Legging (Black),Leggings,not-for-sale,Size
-Boss Gloss - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Honeycrisp - 2 Items,Alanna Legging (Apple Butter),Leggings,not-for-sale,Size
-Honeycrisp - 2 Items,Flurry Fleece Zip (Eggnog),sports-jacket,not-for-sale,Size
-Honeycrisp - 3 Items,Alanna Legging (Apple Butter),Leggings,not-for-sale,Size
-Honeycrisp - 3 Items,Flurry Fleece Zip (Eggnog),sports-jacket,not-for-sale,Size
-Honeycrisp - 3 Items,Swing Tank (Apple Butter),Tops,not-for-sale,Size
-Honeycrisp - 5 Items,Alanna Legging (Apple Butter),Leggings,not-for-sale,Size
-Honeycrisp - 5 Items,Flurry Fleece Zip (Eggnog),sports-jacket,not-for-sale,Size
-Honeycrisp - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Honeycrisp - 5 Items,Swing Tank (Apple Butter),Tops,not-for-sale,Size
-Honeycrisp - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Main Attraction - 2 Items,Berlin Tummy Control Legging (Black/ Festival Fuschia),Leggings,not-for-sale,Size
-Main Attraction - 2 Items,Reset Cardigan (White),sports-jacket,not-for-sale,Size
-Main Attraction - 3 Items,Berlin Tummy Control Legging (Black/ Festival Fuschia),Leggings,not-for-sale,Size
-Main Attraction - 3 Items,Liz Sport Bra (White),Sports Bra,not-for-sale,Size
-Main Attraction - 3 Items,Reset Cardigan (White),sports-jacket,not-for-sale,Size
-Main Attraction - 5 Items,Berlin Tummy Control Legging (Black/ Festival Fuschia),Leggings,not-for-sale,Size
-Main Attraction - 5 Items,Liz Sport Bra (White),Sports Bra,not-for-sale,Size
-Main Attraction - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Main Attraction - 5 Items,Reset Cardigan (White),sports-jacket,not-for-sale,Size
-Main Attraction - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-North Pole - 2 Items,"Brenda 9"" Short (Black)",Leggings,not-for-sale,Size
-North Pole - 2 Items,Polar Friends Sommers Sweatshirt (Vanilla),Tops,not-for-sale,Size
-North Pole - 3 Items,"Brenda 9"" Short (Black)",Leggings,not-for-sale,Size
-North Pole - 3 Items,Liz Sport Bra (Black),Sports Bra,not-for-sale,Size
-North Pole - 3 Items,Polar Friends Sommers Sweatshirt (Vanilla),Tops,not-for-sale,Size
-North Pole - 5 Items,"Brenda 9"" Short (Black)",Leggings,not-for-sale,Size
-North Pole - 5 Items,Liz Sport Bra (Black),Sports Bra,not-for-sale,Size
-North Pole - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-North Pole - 5 Items,Polar Friends Sommers Sweatshirt (Vanilla),Tops,not-for-sale,Size
-North Pole - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Opposites Attract - 2 Items,Audrey Pullover Tunic (Cannoli Cream),Tops,not-for-sale,Size
-Opposites Attract - 2 Items,High Rise Pocket Ankle (Black),Leggings,not-for-sale,Size
-Opposites Attract - 3 Items,Audrey Pullover Tunic (Cannoli Cream),Tops,not-for-sale,Size
-Opposites Attract - 3 Items,Eloise Sports Bra (Black),Sports Bra,not-for-sale,Size
-Opposites Attract - 3 Items,High Rise Pocket Ankle (Black),Leggings,not-for-sale,Size
-Opposites Attract - 5 Items,Audrey Pullover Tunic (Cannoli Cream),Tops,not-for-sale,Size
-Opposites Attract - 5 Items,Eloise Sports Bra (Black),Sports Bra,not-for-sale,Size
-Opposites Attract - 5 Items,High Rise Pocket Ankle (Black),Leggings,not-for-sale,Size
-Opposites Attract - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Opposites Attract - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Pinot Noir - 2 Items,Breathe Twist Long Sleeve (Boisenberry),Tops,not-for-sale,Size
-Pinot Noir - 2 Items,Jogger Legging (Shark),Leggings,not-for-sale,Size
-Pinot Noir - 3 Items,Breathe Twist Long Sleeve (Boisenberry),Tops,not-for-sale,Size
-Pinot Noir - 3 Items,Jogger Legging (Shark),Leggings,not-for-sale,Size
-Pinot Noir - 3 Items,Milan Seamless Sport Bra (Boisenberry),Sports Bra,not-for-sale,Size
-Pinot Noir - 5 Items,Breathe Twist Long Sleeve (Boisenberry),Tops,not-for-sale,Size
-Pinot Noir - 5 Items,Jogger Legging (Shark),Leggings,not-for-sale,Size
-Pinot Noir - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Pinot Noir - 5 Items,Milan Seamless Sport Bra (Boisenberry),Sports Bra,not-for-sale,Size
-Pinot Noir - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Polar Flair - 2 Items,Eclipse Ankle Legging (Black),Leggings,not-for-sale,Size
-Polar Flair - 2 Items,Winter Coke Fifi Sweatshirt (Aura Orange),Tops,not-for-sale,Size
-Polar Flair - 3 Items,Eclipse Ankle Legging (Black),Leggings,not-for-sale,Size
-Polar Flair - 3 Items,Tonya Seamless Sports Bra (Black),Sports Bra,not-for-sale,Size
-Polar Flair - 3 Items,Winter Coke Fifi Sweatshirt (Aura Orange),Tops,not-for-sale,Size
-Polar Flair - 5 Items,Eclipse Ankle Legging (Black),Leggings,not-for-sale,Size
-Polar Flair - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Polar Flair - 5 Items,Tonya Seamless Sports Bra (Black),Sports Bra,not-for-sale,Size
-Polar Flair - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Polar Flair - 5 Items,Winter Coke Fifi Sweatshirt (Aura Orange),Tops,not-for-sale,Size
-Port Authority - 2 Items,Cropped Active Jacket (Tawny Port),sports-jacket,not-for-sale,Size
-Port Authority - 2 Items,Emery Legging (Tawny Port),Leggings,not-for-sale,Size
-Port Authority - 3 Items,Cropped Active Jacket (Tawny Port),sports-jacket,not-for-sale,Size
-Port Authority - 3 Items,Emery Legging (Tawny Port),Leggings,not-for-sale,Size
-Port Authority - 3 Items,Rose Sports Bra (Tawny Port),Sports Bra,not-for-sale,Size
-Port Authority - 5 Items,Cropped Active Jacket (Tawny Port),sports-jacket,not-for-sale,Size
-Port Authority - 5 Items,Emery Legging (Tawny Port),Leggings,not-for-sale,Size
-Port Authority - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Port Authority - 5 Items,Rose Sports Bra (Tawny Port),Sports Bra,not-for-sale,Size
-Port Authority - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Ride Or Dye - 2 Items,Tie Dye Hoodie (Hadley Tie Dye),Tops,not-for-sale,Size
-Ride Or Dye - 2 Items,Tie Dye Jogger (Hadley Tie Dye),Leggings,not-for-sale,Size
-Ride Or Dye - 3 Items,Mary Jane Sport Bra (Deep Teal),Sports Bra,not-for-sale,Size
-Ride Or Dye - 3 Items,Tie Dye Hoodie (Hadley Tie Dye),Tops,not-for-sale,Size
-Ride Or Dye - 3 Items,Tie Dye Jogger (Hadley Tie Dye),Leggings,not-for-sale,Size
-Ride Or Dye - 5 Items,Mary Jane Sport Bra (Deep Teal),Sports Bra,not-for-sale,Size
-Ride Or Dye - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Ride Or Dye - 5 Items,Tie Dye Hoodie (Hadley Tie Dye),Tops,not-for-sale,Size
-Ride Or Dye - 5 Items,Tie Dye Jogger (Hadley Tie Dye),Leggings,not-for-sale,Size
-Ride Or Dye - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Rose To The Top - 2 Items,Angie Wrap Short Sleeve (Mesa Rose),Tops,not-for-sale,Size
-Rose To The Top - 2 Items,Serene Legging (H. Black),Leggings,not-for-sale,Size
-Rose To The Top - 3 Items,Angie Wrap Short Sleeve (Mesa Rose),Tops,not-for-sale,Size
-Rose To The Top - 3 Items,Lucy Long Bra (H. Black),Sports Bra,not-for-sale,Size
-Rose To The Top - 3 Items,Serene Legging (H. Black),Leggings,not-for-sale,Size
-Rose To The Top - 5 Items,Angie Wrap Short Sleeve (Mesa Rose),Tops,not-for-sale,Size
-Rose To The Top - 5 Items,Lucy Long Bra (H. Black),Sports Bra,not-for-sale,Size
-Rose To The Top - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Rose To The Top - 5 Items,Serene Legging (H. Black),Leggings,not-for-sale,Size
-Rose To The Top - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Sparrow - 2 Items,Cropped Active Jacket (Sparrow),sports-jacket,not-for-sale,Size
-Sparrow - 2 Items,Emery Legging (Sparrow),Leggings,not-for-sale,Size
-Sparrow - 3 Items,Cropped Active Jacket (Sparrow),sports-jacket,not-for-sale,Size
-Sparrow - 3 Items,Emery Legging (Sparrow),Leggings,not-for-sale,Size
-Sparrow - 3 Items,Rose Long Bra (Sparrow),Sports Bra,not-for-sale,Size
-Sparrow - 5 Items,Cropped Active Jacket (Sparrow),sports-jacket,not-for-sale,Size
-Sparrow - 5 Items,Emery Legging (Sparrow),Leggings,not-for-sale,Size
-Sparrow - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Sparrow - 5 Items,Rose Long Bra (Sparrow),Sports Bra,not-for-sale,Size
-Sparrow - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Specks Appeal - 2 Items,Jacoby Hoodie (Black),Tops,not-for-sale,Size
-Specks Appeal - 2 Items,Printed Easy Ankle (Neutral Grey Speckle),Leggings,not-for-sale,Size
-Specks Appeal - 3 Items,Jacoby Hoodie (Black),Tops,not-for-sale,Size
-Specks Appeal - 3 Items,Lacey Sport Bra (Neutral Grey Speckle),Sports Bra,not-for-sale,Size
-Specks Appeal - 3 Items,Printed Easy Ankle (Neutral Grey Speckle),Leggings,not-for-sale,Size
-Specks Appeal - 5 Items,Jacoby Hoodie (Black),Tops,not-for-sale,Size
-Specks Appeal - 5 Items,Lacey Sport Bra (Neutral Grey Speckle),Sports Bra,not-for-sale,Size
-Specks Appeal - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Specks Appeal - 5 Items,Printed Easy Ankle (Neutral Grey Speckle),Leggings,not-for-sale,Size
-Specks Appeal - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Spiced Plum - 2 Items,Alanna Legging (Wild Plum),Leggings,not-for-sale,Size
-Spiced Plum - 2 Items,Flurry Fleece Zip (Quail),sports-jacket,not-for-sale,Size
-Spiced Plum - 3 Items,Alanna Legging (Wild Plum),Leggings,not-for-sale,Size
-Spiced Plum - 3 Items,Flurry Fleece Zip (Quail),sports-jacket,not-for-sale,Size
-Spiced Plum - 3 Items,Swing Tank (Quail),Tops,not-for-sale,Size
-Spiced Plum - 5 Items,Alanna Legging (Wild Plum),Leggings,not-for-sale,Size
-Spiced Plum - 5 Items,Flurry Fleece Zip (Quail),sports-jacket,not-for-sale,Size
-Spiced Plum - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Spiced Plum - 5 Items,Swing Tank (Quail),Tops,not-for-sale,Size
-Spiced Plum - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Stardust - 2 Items,Betta Long Sleeve (H. Easter Egg),Tops,not-for-sale,Size
-Stardust - 2 Items,Shimmer Legging (Easter Egg/ Iridescent Foil),Leggings,not-for-sale,Size
-Stardust - 3 Items,Betta Long Sleeve (H. Easter Egg),Tops,not-for-sale,Size
-Stardust - 3 Items,Carter Long Bra (Easter Egg/ Iridescent),Sports Bra,not-for-sale,Size
-Stardust - 3 Items,Shimmer Legging (Easter Egg/ Iridescent Foil),Leggings,not-for-sale,Size
-Stardust - 5 Items,Betta Long Sleeve (H. Easter Egg),Tops,not-for-sale,Size
-Stardust - 5 Items,Carter Long Bra (Easter Egg/ Iridescent),Sports Bra,not-for-sale,Size
-Stardust - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Stardust - 5 Items,Shimmer Legging (Easter Egg/ Iridescent Foil),Leggings,not-for-sale,Size
-Stardust - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
-Tree Hugger - 2 Items,Easy Ankle Legging (Midnight Teal),Leggings,not-for-sale,Size
-Tree Hugger - 2 Items,Georgia Pullover (H. Midnight Teal),Tops,not-for-sale,Size
-Tree Hugger - 3 Items,Easy Ankle Legging (Midnight Teal),Leggings,not-for-sale,Size
-Tree Hugger - 3 Items,Georgia Pullover (H. Midnight Teal),Tops,not-for-sale,Size
-Tree Hugger - 3 Items,Tonya Seamless Sports Bra (Ebony),Sports Bra,not-for-sale,Size
-Tree Hugger - 5 Items,Easy Ankle Legging (Midnight Teal),Leggings,not-for-sale,Size
-Tree Hugger - 5 Items,Georgia Pullover (H. Midnight Teal),Tops,not-for-sale,Size
-Tree Hugger - 5 Items,Medium Glute Band (Marbled Stone),Accessories,not-for-sale,Size,1
-Tree Hugger - 5 Items,Tonya Seamless Sports Bra (Ebony),Sports Bra,not-for-sale,Size
-Tree Hugger - 5 Items,Weighted Jump Rope (Bally Red),Equipment,not-for-sale,Size,1
+product_collection,product_name,product_type,template_suffix,options,equipment_found,accessories_found,product_status,product_status_ok,product_type_ok
+Black Tie - 2 Items,Pandora Pullover (White),Tops,not-for-sale,Size,"","",active,true,true
+Black Tie - 2 Items,Revive Legging (Black/ White),Leggings,not-for-sale,Size,"","",active,true,true
+Black Tie - 3 Items,Mara Sport Bra (Black/ White),Sports Bra,not-for-sale,Size,"","",active,true,true
+Black Tie - 3 Items,Pandora Pullover (White),Tops,not-for-sale,Size,"","",active,true,true
+Black Tie - 3 Items,Revive Legging (Black/ White),Leggings,not-for-sale,Size,"","",active,true,true
+Black Tie - 5 Items,Mara Sport Bra (Black/ White),Sports Bra,not-for-sale,Size,"","",active,true,true
+Black Tie - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Black Tie - 5 Items,Pandora Pullover (White),Tops,not-for-sale,Size,"","",active,true,true
+Black Tie - 5 Items,Revive Legging (Black/ White),Leggings,not-for-sale,Size,"","",active,true,true
+Black Tie - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Blue Moon - 2 Items,Audrey Legging (Crown Blue),Leggings,not-for-sale,Size,"","",active,true,true
+Blue Moon - 2 Items,Celia Tank (Crown Blue),Tops,not-for-sale,Size,"","",active,true,true
+Blue Moon - 3 Items,Audrey Legging (Crown Blue),Leggings,not-for-sale,Size,"","",active,true,true
+Blue Moon - 3 Items,Celia Tank (Crown Blue),Tops,not-for-sale,Size,"","",active,true,true
+Blue Moon - 3 Items,Evie Seamless Sport Bra (Crown Blue),Sports Bra,not-for-sale,Size,"","",active,true,true
+Blue Moon - 5 Items,Audrey Legging (Crown Blue),Leggings,not-for-sale,Size,"","",active,true,true
+Blue Moon - 5 Items,Celia Tank (Crown Blue),Tops,not-for-sale,Size,"","",active,true,true
+Blue Moon - 5 Items,Evie Seamless Sport Bra (Crown Blue),Sports Bra,not-for-sale,Size,"","",active,true,true
+Blue Moon - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Blue Moon - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Cherry Blossom - 2 Items,Jessi Hoodie (H. Pale Mauve),sports-jacket,not-for-sale,Size,"","",active,true,true
+Cherry Blossom - 2 Items,Jessi Jogger (H. Pale Mauve),Leggings,not-for-sale,Size,"","",active,true,true
+Cherry Blossom - 3 Items,Jessi Hoodie (H. Pale Mauve),sports-jacket,not-for-sale,Size,"","",active,true,true
+Cherry Blossom - 3 Items,Jessi Jogger (H. Pale Mauve),Leggings,not-for-sale,Size,"","",active,true,true
+Cherry Blossom - 3 Items,Madeline Tank (White),Tops,not-for-sale,Size,"","",active,true,true
+Cherry Blossom - 5 Items,Jessi Hoodie (H. Pale Mauve),sports-jacket,not-for-sale,Size,"","",active,true,true
+Cherry Blossom - 5 Items,Jessi Jogger (H. Pale Mauve),Leggings,not-for-sale,Size,"","",active,true,true
+Cherry Blossom - 5 Items,Madeline Tank (White),Tops,not-for-sale,Size,"","",active,true,true
+Cherry Blossom - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Cherry Blossom - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Floral Flow - 2 Items,Printed Easy Ankle (Neutral Watercolor),Leggings,not-for-sale,Size,"","",active,true,true
+Floral Flow - 2 Items,Tabby Long Sleeve (Chateau Grey),Tops,not-for-sale,Size,"","",active,true,true
+Floral Flow - 3 Items,Brooklyn Sport Bra (Neutral Watercolor),Sports Bra,not-for-sale,Size,"","",active,true,true
+Floral Flow - 3 Items,Printed Easy Ankle (Neutral Watercolor),Leggings,not-for-sale,Size,"","",active,true,true
+Floral Flow - 3 Items,Tabby Long Sleeve (Chateau Grey),Tops,not-for-sale,Size,"","",active,true,true
+Floral Flow - 5 Items,Brooklyn Sport Bra (Neutral Watercolor),Sports Bra,not-for-sale,Size,"","",active,true,true
+Floral Flow - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Floral Flow - 5 Items,Printed Easy Ankle (Neutral Watercolor),Leggings,not-for-sale,Size,"","",active,true,true
+Floral Flow - 5 Items,Tabby Long Sleeve (Chateau Grey),Tops,not-for-sale,Size,"","",active,true,true
+Floral Flow - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Heather Weather - 2 Items,After Class Hoodie (Trooper),Tops,not-for-sale,Size,"","",active,true,true
+Heather Weather - 2 Items,Solace Legging (H. Troopers),Leggings,not-for-sale,Size,"","",active,true,true
+Heather Weather - 3 Items,After Class Hoodie (Trooper),Tops,not-for-sale,Size,"","",active,true,true
+Heather Weather - 3 Items,Ellen Long Bra (Black),Sports Bra,not-for-sale,Size,"","",active,true,true
+Heather Weather - 3 Items,Solace Legging (H. Troopers),Leggings,not-for-sale,Size,"","",active,true,true
+Heather Weather - 5 Items,After Class Hoodie (Trooper),Tops,not-for-sale,Size,"","",active,true,true
+Heather Weather - 5 Items,Ellen Long Bra (Black),Sports Bra,not-for-sale,Size,"","",active,true,true
+Heather Weather - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Heather Weather - 5 Items,Solace Legging (H. Troopers),Leggings,not-for-sale,Size,"","",active,true,true
+Heather Weather - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Make Waves - 2 Items,Sammy Legging (Colonial Blue),Leggings,not-for-sale,Size,"","",active,true,true
+Make Waves - 2 Items,Sonia Hoodie (H. Granite Green),Tops,not-for-sale,Size,"","",active,true,true
+Make Waves - 3 Items,Sammy Legging (Colonial Blue),Leggings,not-for-sale,Size,"","",active,true,true
+Make Waves - 3 Items,Sonia Hoodie (H. Granite Green),Tops,not-for-sale,Size,"","",active,true,true
+Make Waves - 3 Items,Violet Long Bra (Colonial Blue),Sports Bra,not-for-sale,Size,"","",active,true,true
+Make Waves - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Make Waves - 5 Items,Sammy Legging (Colonial Blue),Leggings,not-for-sale,Size,"","",active,true,true
+Make Waves - 5 Items,Sonia Hoodie (H. Granite Green),Tops,not-for-sale,Size,"","",active,true,true
+Make Waves - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Make Waves - 5 Items,Violet Long Bra (Colonial Blue),Sports Bra,not-for-sale,Size,"","",active,true,true
+Pinot Noir - 2 Items,Breathe Twist Long Sleeve (Boisenberry),Tops,not-for-sale,Size,"","",active,true,true
+Pinot Noir - 2 Items,Jogger Legging (Shark),Leggings,not-for-sale,Size,"","",active,true,true
+Pinot Noir - 3 Items,Breathe Twist Long Sleeve (Boisenberry),Tops,not-for-sale,Size,"","",active,true,true
+Pinot Noir - 3 Items,Jogger Legging (Shark),Leggings,not-for-sale,Size,"","",active,true,true
+Pinot Noir - 3 Items,Milan Seamless Sport Bra (Boisenberry),Sports Bra,not-for-sale,Size,"","",active,true,true
+Pinot Noir - 5 Items,Breathe Twist Long Sleeve (Boisenberry),Tops,not-for-sale,Size,"","",active,true,true
+Pinot Noir - 5 Items,Jogger Legging (Shark),Leggings,not-for-sale,Size,"","",active,true,true
+Pinot Noir - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Pinot Noir - 5 Items,Milan Seamless Sport Bra (Boisenberry),Sports Bra,not-for-sale,Size,"","",active,true,true
+Pinot Noir - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Ride Or Dye - 2 Items,Tie Dye Hoodie (Hadley Tie Dye),Tops,not-for-sale,Size,"","",active,true,true
+Ride Or Dye - 2 Items,Tie Dye Jogger (Hadley Tie Dye),Leggings,not-for-sale,Size,"","",active,true,true
+Ride Or Dye - 3 Items,Mary Jane Sport Bra (Deep Teal),Sports Bra,not-for-sale,Size,"","",active,true,true
+Ride Or Dye - 3 Items,Tie Dye Hoodie (Hadley Tie Dye),Tops,not-for-sale,Size,"","",active,true,true
+Ride Or Dye - 3 Items,Tie Dye Jogger (Hadley Tie Dye),Leggings,not-for-sale,Size,"","",active,true,true
+Ride Or Dye - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Ride Or Dye - 5 Items,Mary Jane Sport Bra (Deep Teal),Sports Bra,not-for-sale,Size,"","",active,true,true
+Ride Or Dye - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Ride Or Dye - 5 Items,Tie Dye Hoodie (Hadley Tie Dye),Tops,not-for-sale,Size,"","",active,true,true
+Ride Or Dye - 5 Items,Tie Dye Jogger (Hadley Tie Dye),Leggings,not-for-sale,Size,"","",active,true,true
+Ripple Effect - 2 Items,Fisher Crop Hoodie (Thyme Ripple Tie Dye),Tops,not-for-sale,Size,"","",active,true,true
+Ripple Effect - 2 Items,Tanya Jogger (Thyme Ripple Tie Dye),Leggings,not-for-sale,Size,"","",active,true,true
+Ripple Effect - 3 Items,Fisher Crop Hoodie (Thyme Ripple Tie Dye),Tops,not-for-sale,Size,"","",active,true,true
+Ripple Effect - 3 Items,London Seamless Bra (Wild Cove),Sports Bra,not-for-sale,Size,"","",active,true,true
+Ripple Effect - 3 Items,Tanya Jogger (Thyme Ripple Tie Dye),Leggings,not-for-sale,Size,"","",active,true,true
+Ripple Effect - 5 Items,Fisher Crop Hoodie (Thyme Ripple Tie Dye),Tops,not-for-sale,Size,"","",active,true,true
+Ripple Effect - 5 Items,London Seamless Bra (Wild Cove),Sports Bra,not-for-sale,Size,"","",active,true,true
+Ripple Effect - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Ripple Effect - 5 Items,Tanya Jogger (Thyme Ripple Tie Dye),Leggings,not-for-sale,Size,"","",active,true,true
+Ripple Effect - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Rosy Glow - 2 Items,Alanna High Waist Legging (Mesa Rose),Leggings,not-for-sale,Size,"","",active,true,true
+Rosy Glow - 2 Items,Bexley Top (Potpourii),Tops,not-for-sale,Size,"","",active,true,true
+Rosy Glow - 3 Items,Alanna High Waist Legging (Mesa Rose),Leggings,not-for-sale,Size,"","",active,true,true
+Rosy Glow - 3 Items,Bexley Top (Potpourii),Tops,not-for-sale,Size,"","",active,true,true
+Rosy Glow - 3 Items,Evie Seamless Sport Bra (White),Sports Bra,not-for-sale,Size,"","",active,true,true
+Rosy Glow - 5 Items,Alanna High Waist Legging (Mesa Rose),Leggings,not-for-sale,Size,"","",active,true,true
+Rosy Glow - 5 Items,Bexley Top (Potpourii),Tops,not-for-sale,Size,"","",active,true,true
+Rosy Glow - 5 Items,Evie Seamless Sport Bra (White),Sports Bra,not-for-sale,Size,"","",active,true,true
+Rosy Glow - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Rosy Glow - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Slick Moves - 2 Items,Bria Tank (Black),Tops,not-for-sale,Size,"","",active,true,true
+Slick Moves - 2 Items,Isla Legging (Black Ombre Matte Foil),Leggings,not-for-sale,Size,"","",active,true,true
+Slick Moves - 3 Items,Ava Long Bra (Black Ombre Matte Foil),Sports Bra,not-for-sale,Size,"","",active,true,true
+Slick Moves - 3 Items,Bria Tank (Black),Tops,not-for-sale,Size,"","",active,true,true
+Slick Moves - 3 Items,Isla Legging (Black Ombre Matte Foil),Leggings,not-for-sale,Size,"","",active,true,true
+Slick Moves - 5 Items,Ava Long Bra (Black Ombre Matte Foil),Sports Bra,not-for-sale,Size,"","",active,true,true
+Slick Moves - 5 Items,Bria Tank (Black),Tops,not-for-sale,Size,"","",active,true,true
+Slick Moves - 5 Items,Isla Legging (Black Ombre Matte Foil),Leggings,not-for-sale,Size,"","",active,true,true
+Slick Moves - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Slick Moves - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Sparrow - 2 Items,Cropped Active Jacket (Sparrow),sports-jacket,not-for-sale,Size,"","",active,true,true
+Sparrow - 2 Items,Emery Legging (Sparrow),Leggings,not-for-sale,Size,"","",active,true,true
+Sparrow - 3 Items,Cropped Active Jacket (Sparrow),sports-jacket,not-for-sale,Size,"","",active,true,true
+Sparrow - 3 Items,Emery Legging (Sparrow),Leggings,not-for-sale,Size,"","",active,true,true
+Sparrow - 3 Items,Rose Long Bra (Sparrow),Sports Bra,not-for-sale,Size,"","",active,true,true
+Sparrow - 5 Items,Cropped Active Jacket (Sparrow),sports-jacket,not-for-sale,Size,"","",active,true,true
+Sparrow - 5 Items,Emery Legging (Sparrow),Leggings,not-for-sale,Size,"","",active,true,true
+Sparrow - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Sparrow - 5 Items,Rose Long Bra (Sparrow),Sports Bra,not-for-sale,Size,"","",active,true,true
+Sparrow - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Stardust - 2 Items,Betta Long Sleeve (H. Easter Egg),Tops,not-for-sale,Size,"","",active,true,true
+Stardust - 2 Items,Shimmer Legging (Easter Egg/ Iridescent Foil),Leggings,not-for-sale,Size,"","",active,true,true
+Stardust - 3 Items,Betta Long Sleeve (H. Easter Egg),Tops,not-for-sale,Size,"","",active,true,true
+Stardust - 3 Items,Carter Long Bra (Easter Egg/ Iridescent),Sports Bra,not-for-sale,Size,"","",active,true,true
+Stardust - 3 Items,Shimmer Legging (Easter Egg/ Iridescent Foil),Leggings,not-for-sale,Size,"","",active,true,true
+Stardust - 5 Items,Betta Long Sleeve (H. Easter Egg),Tops,not-for-sale,Size,"","",active,true,true
+Stardust - 5 Items,Carter Long Bra (Easter Egg/ Iridescent),Sports Bra,not-for-sale,Size,"","",active,true,true
+Stardust - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Stardust - 5 Items,Shimmer Legging (Easter Egg/ Iridescent Foil),Leggings,not-for-sale,Size,"","",active,true,true
+Stardust - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true
+Sugar And Spice - 2 Items,Andrea Tee (Midnight Navy),Tops,not-for-sale,Size,"","",active,true,true
+Sugar And Spice - 2 Items,Jenna Capri (Chutney),Leggings,not-for-sale,Size,"","",active,true,true
+Sugar And Spice - 3 Items,Andrea Tee (Midnight Navy),Tops,not-for-sale,Size,"","",active,true,true
+Sugar And Spice - 3 Items,Jenna Capri (Chutney),Leggings,not-for-sale,Size,"","",active,true,true
+Sugar And Spice - 3 Items,Paisley Sports Bra (Midnight Navy),Sports Bra,not-for-sale,Size,"","",active,true,true
+Sugar And Spice - 5 Items,Andrea Tee (Midnight Navy),Tops,not-for-sale,Size,"","",active,true,true
+Sugar And Spice - 5 Items,Jenna Capri (Chutney),Leggings,not-for-sale,Size,"","",active,true,true
+Sugar And Spice - 5 Items,Marble Massager (Shell Coral),Accessories,not-for-sale,Size,"",1,active,true,true
+Sugar And Spice - 5 Items,Paisley Sports Bra (Midnight Navy),Sports Bra,not-for-sale,Size,"","",active,true,true
+Sugar And Spice - 5 Items,Therapy Bands (3),Equipment,not-for-sale,Size,1,"",active,true,true

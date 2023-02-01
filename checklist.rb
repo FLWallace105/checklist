@@ -16,7 +16,7 @@ Dotenv.load
 module Checklist
   class ShopifyGetter
     include SendGrid
-    
+    ACCEPTABLE_PRODUCT_TYPES = ["Tops", "Accessories", "Equipment", "Leggings", "Sports Bra", "Jacket", "Wrap", "sports-jacket", "Gloves"]
 
     def initialize
       @shopname = ENV['SHOPIFY_SHOP_NAME']
@@ -72,9 +72,9 @@ module Checklist
       my_today = my_start_month_plus.strftime("%B %Y")
       #monthly_collection = "#{my_today} Collections"
       
-      monthly_collection = "December 2022 Collections"
+      monthly_collection = "February 2023 Collections"
 
-      #puts "monthly_collection = #{monthly_collection}"
+      puts "monthly_collection = #{monthly_collection}"
       #exit
 
       
@@ -94,10 +94,9 @@ module Checklist
 
       my_products = ShopifyAPI::Product.all( collection_id: collection_id,  limit: 250 )
       num_products = 0
+      puts "collection_id = #{collection_id}"
 
-      
-      
-
+    
       
       
 
@@ -109,6 +108,7 @@ module Checklist
          puts myp.inspect
          puts "**************"
 
+        
         mymeta = ShopifyAPI::Metafield.all(resource: 'products', resource_id: myp.original_state[:id], namespace: 'ellie_order_info', fields: 'value')
         # #note, it could be just []
         #puts "mymeta = #{mymeta}"
@@ -146,6 +146,7 @@ module Checklist
 
       puts "here we have #{num_products} number of products"
       puts "done with first loop"
+      
       
       if product_count > 250
 
@@ -196,6 +197,8 @@ module Checklist
     found_accessory_array = Array.new
     found_equipment_array = Array.new
 
+    
+
     product_array.each do |myp|
       puts "-------------"
       puts myp
@@ -223,6 +226,7 @@ module Checklist
       end
 
       next if  myp['product_collection'] =~ /ellie\spick/i
+      next if myp['product_title'] =~ /ellie\spick/i
       my_products = ShopifyAPI::Product.all( collection_id: collection_id,  limit: 250 )
       found_accessory_hash = {"product_collection" => myp['product_collection'], "num_found" => 0}
       found_equipment_hash = {"product_collection" => myp['product_collection'], "num_found" => 0}
@@ -231,6 +235,7 @@ module Checklist
         puts "-------------"
         puts myprod.inspect
         puts "-------------"
+        
         
         if myp['product_collection'] =~ /5\sitem/i
           if myprod.original_state[:product_type] == "Accessories" 
@@ -250,7 +255,7 @@ module Checklist
           end
 
         end
-        temp_hash2 = {"product_collection" => myp['product_collection'], "product_name" => myprod.original_state[:title], "product_type" => myprod.original_state[:product_type], "options" => myprod.original_state[:options].first['name'], "template_suffix" =>  myprod.original_state[:template_suffix]}
+        temp_hash2 = {"product_collection" => myp['product_collection'], "product_name" => myprod.original_state[:title], "product_type" => myprod.original_state[:product_type], "options" => myprod.original_state[:options].first['name'], "template_suffix" =>  myprod.original_state[:template_suffix], "product_status" => myprod.original_state[:status]}
         detail_product_collection.push(temp_hash2)
         
 
@@ -260,6 +265,8 @@ module Checklist
       
 
     end
+
+    
 
     detail_product_collection.each do |dpc|
       puts "*************"
@@ -289,7 +296,7 @@ module Checklist
 
     
 
-    column_header = ["product_title", "product_id", "variant_id", "sku", "price", "product_collection", "title_equals_collection", "published_at", "product_count_match", "handle", "slugified_title", "handle_ok", "template_suffix"]
+    column_header = ["product_title", "product_id", "variant_id", "sku", "price", "product_collection", "title_equals_collection", "published_at", "product_count_match", "handle", "slugified_title", "handle_ok", "template_suffix", "product_status"]
         CSV.open('ellie_checklist_rollover.csv','a+', :write_headers=> true, :headers => column_header) do |hdr|
             column_header = nil
             product_array.each do |pa|
@@ -298,7 +305,7 @@ module Checklist
 
             end
             hdr << ["---------- Detail Product Collection info ------------"]
-            hdr << ["product_collection", "product_name", "product_type", "template_suffix", "options", "equipment_found", "accessories_found" ]
+            hdr << ["product_collection", "product_name", "product_type", "template_suffix", "options", "equipment_found", "accessories_found", "product_status", "product_status_ok", "product_type_ok" ]
             detail_product_collection.each do |dpc|
               if dpc["product_type"] =~ /bottom/i
                 csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], "< ----- BADDDD Bottoms will break this collection"]
@@ -306,18 +313,24 @@ module Checklist
                 if dpc['accessories_found'] != 1
                   csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['accessories_found'], "<---------- ERROR Must be only 1"]
                 else
-                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['accessories_found']]
+                  product_status_production = product_status_ok(dpc["product_status"])
+                  temp_ok = product_type_ok(dpc["product_type"])
+                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], "", dpc['accessories_found'], dpc["product_status"], product_status_production, temp_ok]
                 end
                 
               elsif dpc["product_collection"] =~ /5\sitem/i && dpc["product_type"] == "Equipment"
                 if dpc['equipment_found'] != 1
                   csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['equipment_found'], "<---------- Error must be only 1"]
                 else
-                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['equipment_found']]
+                  product_status_production = product_status_ok(dpc["product_status"])
+                  temp_ok = product_type_ok(dpc["product_type"])
+                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['equipment_found'], "", dpc["product_status"], product_status_production, temp_ok]
                 end
                 
               else
-                csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options']]
+                product_status_production = product_status_ok(dpc["product_status"])
+                temp_ok = product_type_ok(dpc["product_type"])
+                csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], "" , "" , dpc["product_status"], product_status_production, temp_ok]
               end
               
               hdr << csv_data_out
@@ -364,6 +377,21 @@ module Checklist
 
 
     puts "All done"
+
+    end
+
+    def product_status_ok(product_status)
+      if product_status == "active"
+        return true
+      else
+        return false
+      end
+    end
+
+
+    def product_type_ok(product_type)
+      my_ok = ACCEPTABLE_PRODUCT_TYPES.include?(product_type)
+      return my_ok
 
     end
 
