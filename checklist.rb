@@ -70,9 +70,9 @@ module Checklist
       my_start_month_plus = my_start_month_plus >> 1
 
       my_today = my_start_month_plus.strftime("%B %Y")
-      #monthly_collection = "#{my_today} Collections"
+      monthly_collection = "#{my_today} Collections"
       
-      monthly_collection = "February 2023 Collections"
+      #monthly_collection = "February 2023 Collections"
 
       puts "monthly_collection = #{monthly_collection}"
       #exit
