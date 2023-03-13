@@ -3,7 +3,11 @@ require 'dotenv'
 require 'shopify_api'
 #require 'sinatra/activerecord/rake'
 
+require 'resque'
+require 'resque/tasks'
+
 require_relative 'checklist'
+require_relative 'sinatra_checklist'
 
 #require 'active_record/railties/databases.rake'
 

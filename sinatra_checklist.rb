@@ -21,7 +21,7 @@ class RolloverChecklist < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
 
-  #helpers Sinatra::PromoNotes::Helpers
+  helpers Sinatra::RolloverChecklist::Helpers
 
 
   before do
@@ -37,6 +37,18 @@ class RolloverChecklist < Sinatra::Base
     # "hello welcome to checklist"
 
     erb :index
+  end
+
+  post '/checklist' do
+    puts "received checklist"
+    puts "params = #{params.inspect}"
+    sanitized_params = sanitize_params(params)
+    puts "sanitized_params = #{sanitized_params}"
+    flash[:alert_success] = 'Generating Checklist, check your email in about 15 minutes ...'
+    Resque.enqueue_to(:create_checklist_csv, 'CheckRollover', sanitized_params)
+    redirect "/"
+
+  
   end
 
 
