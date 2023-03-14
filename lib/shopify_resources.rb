@@ -62,6 +62,7 @@ module ShopifyResources
          puts "**************"
 
         
+        
         mymeta = ShopifyAPI::Metafield.all(resource: 'products', resource_id: myp.original_state[:id], namespace: 'ellie_order_info', fields: 'value')
         # #note, it could be just []
         #puts "mymeta = #{mymeta}"
@@ -87,9 +88,9 @@ module ShopifyResources
           title_equals_collection = false
         end
   
-        puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, title_equals_collection: #{title_equals_collection}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}, template_suffix: #{myp.original_state[:template_suffix]}"
+        puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, title_equals_collection: #{title_equals_collection}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}, template_suffix: #{myp.original_state[:template_suffix]}, product_status: #{myp.original_state[:status]}"
 
-        my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "title_equals_collection" => title_equals_collection, "published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => myp.original_state[:template_suffix]}
+        my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "title_equals_collection" => title_equals_collection, "published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => myp.original_state[:template_suffix], "product_status" => myp.original_state[:status]}
         
         product_array.push(my_hash)
 
@@ -134,9 +135,9 @@ module ShopifyResources
             title_equals_collection = false
           end
   
-          puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, title_equals_collection: #{title_equals_collection}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}, template_suffix: #{myp.original_state[:template_suffix]}"
+          puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, title_equals_collection: #{title_equals_collection}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}, template_suffix: #{myp.original_state[:template_suffix]}, product_status: #{myp.original_state[:status]}"
 
-          my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "title_equals_collection" => title_equals_collection,"published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => myp.original_state[:template_suffix]}
+          my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "title_equals_collection" => title_equals_collection,"published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => myp.original_state[:template_suffix], "product_status" => myp.original_state[:status]}
         
           product_array.push(my_hash)
           
@@ -258,7 +259,7 @@ module ShopifyResources
         #CSV.open('ellie_checklist_rollover.csv','a+', :write_headers=> true, :headers => column_header) do |hdr|
             #column_header = nil
             product_array.each do |pa|
-              csv_data_out = [pa['product_title'], pa["product_id"], pa['variant_id'], pa['sku'], pa['price'], pa['product_collection'], pa['title_equals_collection'], pa['published_at'], pa['product_match'], pa["handle"], pa["slugified_title"], pa["handle_ok"], pa["template_suffix"] ]
+              csv_data_out = [pa['product_title'], pa["product_id"], pa['variant_id'], pa['sku'], pa['price'], pa['product_collection'], pa['title_equals_collection'], pa['published_at'], pa['product_match'], pa["handle"], pa["slugified_title"], pa["handle_ok"], pa["template_suffix"], pa["product_status"]]
               #hdr << csv_data_out
               puts "here csv_data_out = #{csv_data_out}"
               csv << csv_data_out
