@@ -2,7 +2,7 @@ require 'shopify_api'
 require 'sendgrid-ruby'
 require 'csv'
 module ShopifyResources
-    ACCEPTABLE_PRODUCT_TYPES = ["Tops", "Accessories", "Equipment", "Leggings", "Sports Bra", "Jacket", "Wrap", "sports-jacket", "Gloves"]
+    ACCEPTABLE_PRODUCT_TYPES = ["Tops", "Accessories", "Equipment", "Leggings", "Sports Bra", "Jacket", "Wrap", "sports-jacket", "Gloves", "Dress"]
 
     include SendGrid
 
@@ -25,7 +25,7 @@ module ShopifyResources
       my_today = my_start_month_plus.strftime("%B %Y")
       monthly_collection = "#{my_today} Collections"
       
-      monthly_collection = "March 2023 Collections"
+      #monthly_collection = "March 2023 Collections"
 
       puts "monthly_collection = #{monthly_collection}"
       #exit
