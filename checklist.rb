@@ -16,7 +16,7 @@ Dotenv.load
 module Checklist
   class ShopifyGetter
     include SendGrid
-    ACCEPTABLE_PRODUCT_TYPES = ["Tops", "Accessories", "Equipment", "Leggings", "Sports Bra", "Jacket", "Wrap", "sports-jacket", "Gloves"]
+    ACCEPTABLE_PRODUCT_TYPES = ["Tops", "Accessories", "Equipment", "Leggings", "Sports Bra", "Jacket", "Wrap", "sports-jacket", "Gloves", "Dress"]
 
     def initialize
       @shopname = ENV['SHOPIFY_SHOP_NAME']
