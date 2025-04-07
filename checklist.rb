@@ -7,15 +7,18 @@ require 'shopify_api'
 #require 'logger'
 require 'sendgrid-ruby'
 require 'sinatra'
+require_relative './lib/shopify_api'
 
 
 Dotenv.load
-# Dir[File.join(__dir__, 'lib', '*.rb')].each { |file| require file }
+Dir[File.join(__dir__, 'lib', '*.rb')].each { |file| require file }
 # Dir[File.join(__dir__, 'models', '*.rb')].each { |file| require file }
 
 module Checklist
   class ShopifyGetter
     include SendGrid
+    #extend ShopifyApi
+
     ACCEPTABLE_PRODUCT_TYPES = ["Tops", "Accessories", "Equipment", "Leggings", "Sports Bra", "Jacket", "Wrap", "sports-jacket", "Gloves", "Dress"]
 
     def initialize
@@ -31,30 +34,39 @@ module Checklist
     def shopify_get_all_resources(myemail)
    
       puts "Starting all shopify resources download"
-    #   shop_url = "https://#{@api_key}:#{@password}@#{@shopname}.myshopify.com/admin"
-    #   puts shop_url
-      
-    #   ShopifyAPI::Base.site = shop_url
-    #   ShopifyAPI::Base.api_version = '2020-04'
-    #   ShopifyAPI::Base.timeout = 180
+    
 
     product_array = Array.new
 
     puts "#{@api_key}, #{@secret}, #{@shopname}, #{@app_token}"
 
 
-      ShopifyAPI::Context.setup(
-        api_key: "DUMMY",
-        api_secret_key: @app_token,
-        scope: "DUMMY",
-        host_name: "DUMMY",
-        private_shop: "#{@shopname}.myshopify.com",
-        session_storage: ShopifyAPI::Auth::FileSessionStorage.new,
-        is_embedded: false, 
-        is_private: true, 
-        api_version: "2022-07"
-        
-      )
+    
+
+      query = <<~PRODCNTQUERY
+      {
+        "query": "query { productsCount { count } }"
+      }
+      PRODCNTQUERY
+
+
+      puts query
+      puts @shopname
+ 
+      new_header = ApiShopify.new(@shopname).get_change_header
+      puts "new_header = #{new_header}"
+      store_url = ApiShopify.new(@shopname).store_url
+      new_prod_count_url = store_url + "graphql.json"
+      puts new_prod_count_url
+    
+    
+      prod_count = HTTParty.post(new_prod_count_url, :headers => new_header, :body => query)
+      puts "-------------- product count data ---------"
+      puts prod_count.inspect
+
+      exit
+
+
 
       product_count = ShopifyAPI::Product.count()
       puts "product_count = #{product_count.inspect}"

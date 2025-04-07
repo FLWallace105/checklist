@@ -1,6 +1,6 @@
 require 'dotenv'
 #require 'active_record'
-require 'shopify_api'
+#require 'shopify_api'
 #require 'sinatra/activerecord/rake'
 
 require 'resque'
