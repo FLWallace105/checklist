@@ -64,8 +64,10 @@ module Checklist
       puts "-------------- product count data ---------"
       puts prod_count.inspect
 
-      exit
+      my_product_count = prod_count.parsed_response['data']['productsCount']['count']
+      puts "WE have #{my_product_count} products in #{@shopname}"
 
+      exit
 
 
       product_count = ShopifyAPI::Product.count()
