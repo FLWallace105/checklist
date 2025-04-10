@@ -8,7 +8,7 @@ require 'shopify_api'
 require 'sendgrid-ruby'
 require 'sinatra'
 #require_relative './lib/shopify_api'
-
+require 'active_support/core_ext/string/inflections'
 
 
 
@@ -71,14 +71,11 @@ module Checklist
       puts "WE have #{my_product_count} products in #{@shopname}"
 
       
-      newquery = <<~CQUERY
-        {
-          "query": "query { collectionByHandle(handle: \"april-2025-collections\") { products(first: 200) { edges { node { id  title handle } } } } }"
-        }
-      CQUERY
-
-      puts "newquery = #{newquery}"
-
+      my_start_month_plus = Date.today
+      my_today = my_start_month_plus.strftime("%B %Y")
+      monthly_collection = "#{my_today} Collections"
+      slugified_monthly_collection = monthly_collection.parameterize
+      puts "slugified_monthly_collection = #{slugified_monthly_collection}"
 
       
 
@@ -86,7 +83,7 @@ module Checklist
           :body =>{
             query: <<-GRAPHQL
               {
-                collectionByHandle(handle: "april-2025-collections") {
+                collectionByHandle(handle: "#{slugified_monthly_collection}") {
                   id
                   title
                   products(first: 25, reverse: true) {
@@ -103,23 +100,6 @@ module Checklist
             GRAPHQL
           }.to_json)
 
-      # uri = URI("#{new_prod_count_url}")
-      # https = Net::HTTP.new(uri.host, uri.port)
-      # https.use_ssl = true
-
-      # request = Net::HTTP::Post.new(uri.path)
-
-      # #new_header = {"Content-Type"=>"application/json", "X-Shopify-Access-Token"=>"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"}
-      # #data = { "aaa" => "111" }.to_json; request.body = "[ #{data} ]"
-
-
-      # request['Content-Type'] = 'application/json'
-      # request['X-Shopify-Access-Token'] = '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UE2'
-
-      # data = newquery.to_json
-      # request.body = collquery
-
-      # response = https.request(request)
       
 
 
