@@ -7,7 +7,9 @@ require 'shopify_api'
 #require 'logger'
 require 'sendgrid-ruby'
 require 'sinatra'
-require_relative './lib/shopify_api'
+#require_relative './lib/shopify_api'
+
+
 
 
 Dotenv.load
@@ -58,6 +60,7 @@ module Checklist
       store_url = ApiShopify.new(@shopname).store_url
       new_prod_count_url = store_url + "graphql.json"
       puts new_prod_count_url
+      puts "query here = #{JSON.generate(query)}"
     
     
       prod_count = HTTParty.post(new_prod_count_url, :headers => new_header, :body => query)
@@ -67,7 +70,66 @@ module Checklist
       my_product_count = prod_count.parsed_response['data']['productsCount']['count']
       puts "WE have #{my_product_count} products in #{@shopname}"
 
+      
+      newquery = <<~CQUERY
+        {
+          "query": "query { collectionByHandle(handle: \"april-2025-collections\") { products(first: 200) { edges { node { id  title handle } } } } }"
+        }
+      CQUERY
+
+      puts "newquery = #{newquery}"
+
+
+      
+
+      my_collections = HTTParty.post(new_prod_count_url, :headers => new_header, 
+          :body =>{
+            query: <<-GRAPHQL
+              {
+                collectionByHandle(handle: "april-2025-collections") {
+                  id
+                  title
+                  products(first: 25, reverse: true) {
+                    edges {
+                      node {
+                        id
+                        title
+                        createdAt
+                      }
+                    }
+                  }
+                }
+              }
+            GRAPHQL
+          }.to_json)
+
+      # uri = URI("#{new_prod_count_url}")
+      # https = Net::HTTP.new(uri.host, uri.port)
+      # https.use_ssl = true
+
+      # request = Net::HTTP::Post.new(uri.path)
+
+      # #new_header = {"Content-Type"=>"application/json", "X-Shopify-Access-Token"=>"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"}
+      # #data = { "aaa" => "111" }.to_json; request.body = "[ #{data} ]"
+
+
+      # request['Content-Type'] = 'application/json'
+      # request['X-Shopify-Access-Token'] = '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UE2'
+
+      # data = newquery.to_json
+      # request.body = collquery
+
+      # response = https.request(request)
+      
+
+
+      puts "-------------- collection data ---------"
+      #puts response.inspect
+      puts my_collections.inspect
+
       exit
+
+
 
 
       product_count = ShopifyAPI::Product.count()
