@@ -91,6 +91,11 @@ module Checklist
                       node {
                         id
                         title
+                        handle
+                        productType
+                        publishedAt
+                        status
+                        tags
                         createdAt
                       }
                     }
