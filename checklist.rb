@@ -97,6 +97,9 @@ module Checklist
                         status
                         tags
                         createdAt
+                        ellie_order_info: metafield(namespace: "ellie_order_info", key: "product_collection") {
+                              value
+                            } 
                       }
                     }
                   }
