@@ -100,6 +100,7 @@ module Checklist
                         status
                         tags
                         createdAt
+                        templateSuffix
                         ellie_order_info: metafield(namespace: "ellie_order_info", key: "product_collection") {
                               value
                             } 
@@ -130,10 +131,46 @@ module Checklist
       #puts response.inspect
       puts my_collections.inspect
 
+      my_data = my_collections.parsed_response['data']['collectionByHandle']['products']['edges']
+      puts my_data
 
-      # my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "title_equals_collection" => title_equals_collection, "published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => myp.original_state[:template_suffix]}
-        
-      # product_array.push(my_hash)
+
+      my_data.each do |myd|
+        temp_data = myd['node']
+        temp_id = temp_data['id']
+        fixed_id = temp_id.match(/(\d+)/).captures
+        variant_id = temp_data['variants']['edges'].first['node']['id'].match(/(\d+)/).captures
+        sku = temp_data['variants']['edges'].first['node']['barcode']
+        price = temp_data['variants']['edges'].first['node']['price']
+
+        product_collection = nil
+        if temp_data['ellie_order_info'] != {}
+          product_collection = temp_data['ellie_order_info']['value']
+
+        end
+
+        title_equals_collection = false
+        if  temp_data['title'] == product_collection
+          title_equals_collection = true
+        else
+          title_equals_collection = false
+        end
+
+        slugified_title = temp_data['title'].parameterize
+
+        handle_ok = false
+        if slugified_title == temp_data['handle']
+          handle_ok = true
+        end
+
+        my_hash = {"product_title" => temp_data['title'], "product_id" => fixed_id, "variant_id" => variant_id, "sku" => sku, "price" => price, "product_collection" => product_collection, "title_equals_collection" => title_equals_collection, "published_at" => temp_data['publishedAt'], "handle" => temp_data['handle'], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => temp_data['templateSuffix']}
+          
+        product_array.push(my_hash)
+
+      end
+
+
+      puts "product_array = #{product_array.inspect}"
 
       exit
 
