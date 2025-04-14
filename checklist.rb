@@ -72,6 +72,9 @@ module Checklist
 
       
       my_start_month_plus = Date.today
+      #before production add one month
+
+      
       my_today = my_start_month_plus.strftime("%B %Y")
       monthly_collection = "#{my_today} Collections"
       slugified_monthly_collection = monthly_collection.parameterize
@@ -100,6 +103,18 @@ module Checklist
                         ellie_order_info: metafield(namespace: "ellie_order_info", key: "product_collection") {
                               value
                             } 
+                      variants(first: 25){
+                        edges{
+                          node {
+                            id
+                            barcode
+                            inventoryQuantity
+                            price
+                          
+                          
+                          }
+                        }
+                      }
                       }
                     }
                   }
@@ -114,6 +129,11 @@ module Checklist
       puts "-------------- collection data ---------"
       #puts response.inspect
       puts my_collections.inspect
+
+
+      # my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "title_equals_collection" => title_equals_collection, "published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => myp.original_state[:template_suffix]}
+        
+      # product_array.push(my_hash)
 
       exit
 
