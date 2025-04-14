@@ -172,147 +172,64 @@ module Checklist
 
       puts "product_array = #{product_array.inspect}"
 
+      product_array.each do |pa|
+        my_product_collection = pa['handle']
+
+        my_prods_in_collections = HTTParty.post(new_prod_count_url, :headers => new_header, 
+          :body =>{
+            query: <<-GRAPHQL
+              {
+                collectionByHandle(handle: "#{my_product_collection}") {
+                  id
+                  title
+                  products(first: 25, reverse: true) {
+                    edges {
+                      node {
+                        id
+                        title
+                        handle
+                        productType
+                        publishedAt
+                        status
+                        tags
+                        createdAt
+                        templateSuffix
+                        
+                      variants(first: 25){
+                        edges{
+                          node {
+                            id
+                            barcode
+                            inventoryQuantity
+                            price
+                          
+                          
+                          }
+                        }
+                      }
+                      }
+                    }
+                  }
+                }
+              }
+            GRAPHQL
+          }.to_json)
+
+
+      puts "products in this collection are :"
+      puts my_prods_in_collections.inspect
+      puts "-------------------------------"
+
+      end
+
+      
+
       exit
 
 
 
 
-      product_count = ShopifyAPI::Product.count()
-      puts "product_count = #{product_count.inspect}"
-
-      puts "We have #{product_count.body['count']} products in Ellie now"
-
-      puts "----------------"
-
-      puts "We have #{product_count.body['count']} products"
-
-
-      my_start_month_plus = Date.today 
-      my_start_month_plus = my_start_month_plus >> 1
-
-      my_today = my_start_month_plus.strftime("%B %Y")
-      monthly_collection = "#{my_today} Collections"
       
-      #monthly_collection = "February 2023 Collections"
-
-      puts "monthly_collection = #{monthly_collection}"
-      #exit
-
-      
-
-      my_collection = ShopifyAPI::CustomCollection.all(title: monthly_collection)
-      puts "my_collection = #{my_collection.inspect}"
-      
-
-      puts my_collection.first.original_state[:id]
-      collection_id = my_collection.first.original_state[:id]
-
-      product_count = ShopifyAPI::Product.count(:collection_id => collection_id).body['count']
-
-      puts "We have #{product_count} products in the collection"
-
-      
-
-      my_products = ShopifyAPI::Product.all( collection_id: collection_id,  limit: 250 )
-      num_products = 0
-      puts "collection_id = #{collection_id}"
-
-    
-      
-      
-
-      my_products.each do |myp|
-        puts "-----"
-        #puts "product_id: #{myp.original_state[:id]} product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}"
-        num_products  += 1
-         puts "***************"
-         puts myp.inspect
-         puts "**************"
-
-        
-        mymeta = ShopifyAPI::Metafield.all(resource: 'products', resource_id: myp.original_state[:id], namespace: 'ellie_order_info', fields: 'value')
-        # #note, it could be just []
-        #puts "mymeta = #{mymeta}"
-        # #make sure we assign a value to the string we pass in later
-        my_meta_str = nil
-        if mymeta != []
-          my_meta_str = mymeta.first.original_state[:value]
-        else
-          my_meta_str = nil
-        end
-
-        slugified_title = myp.original_state[:title].parameterize
-
-        handle_ok = false
-        if slugified_title == myp.original_state[:handle]
-          handle_ok = true
-        end
-
-        title_equals_collection = false
-        if myp.original_state[:title] == my_meta_str
-          title_equals_collection = true
-        else
-          title_equals_collection = false
-        end
-  
-        puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, title_equals_collection: #{title_equals_collection}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}, template_suffix: #{myp.original_state[:template_suffix]}"
-
-        my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "title_equals_collection" => title_equals_collection, "published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => myp.original_state[:template_suffix]}
-        
-        product_array.push(my_hash)
-
-        
-  
-      end
-
-      puts "here we have #{num_products} number of products"
-      puts "done with first loop"
-      
-      
-      if product_count > 250
-
-      while my_products.next_page?
-
-        my_products = my_products.fetch_next_page
-      
-        my_products.each do |myp|
-          puts "--SECOND LOOP ---"
-          mymeta = ShopifyAPI::Metafield.all(resource: 'products', resource_id: myp.original_state[:id], namespace: 'ellie_order_info', fields: 'value')
-          # #note, it could be just []
-          #puts "mymeta = #{mymeta}"
-          # #make sure we assign a value to the string we pass in later
-          my_meta_str = nil
-          if mymeta != []
-            my_meta_str = mymeta.first.original_state[:value]
-          else
-            my_meta_str = nil
-          end
-
-          slugified_title = myp.original_state[:title].parameterize
-
-          handle_ok = false
-          if slugified_title == myp.original_state[:handle]
-            handle_ok = true
-          end
-
-          title_equals_collection = false
-          if myp.original_state[:title] == my_meta_str
-            title_equals_collection = true
-          else
-            title_equals_collection = false
-          end
-  
-          puts "product_id: #{myp.original_state[:id]}, variant_id: #{myp.variants.first.original_state[:id]}, sku: #{myp.variants.first.original_state[:sku]}, product_title: #{myp.original_state[:title]}, price: #{myp.variants.first.original_state[:price]}, metafield: #{my_meta_str}, title_equals_collection: #{title_equals_collection}, published_at: #{myp.original_state[:published_at]}, handle: #{myp.original_state[:handle]}, slugified_title: #{slugified_title}, handle_ok: #{handle_ok}, template_suffix: #{myp.original_state[:template_suffix]}"
-
-          my_hash = {"product_title" => myp.original_state[:title], "product_id" => myp.original_state[:id], "variant_id" => myp.variants.first.original_state[:id], "sku" => myp.variants.first.original_state[:sku], "price" => myp.variants.first.original_state[:price], "product_collection" => my_meta_str, "title_equals_collection" => title_equals_collection,"published_at" => myp.original_state[:published_at], "handle" => myp.original_state[:handle], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => myp.original_state[:template_suffix]}
-        
-          product_array.push(my_hash)
-          
-          
-  
-        end
-      end
-    end
 
     detail_product_collection = Array.new
     found_accessory_array = Array.new
