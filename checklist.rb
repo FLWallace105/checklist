@@ -220,6 +220,14 @@ module Checklist
       puts my_prods_in_collections.inspect
       puts "-------------------------------"
 
+      my_prod_data = my_prods_in_collections.parsed_response['data']['collectionByHandle']['products']['edges']
+      puts "my_prod_data = #{my_prod_data}"
+      my_prod_data.each do |myp|
+        puts "*****************"
+        puts myp
+        puts "****************"
+      end
+
       end
 
       
