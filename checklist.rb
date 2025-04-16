@@ -109,6 +109,7 @@ module Checklist
                           node {
                             id
                             barcode
+                            sku
                             inventoryQuantity
                             price
                           
@@ -140,7 +141,7 @@ module Checklist
         temp_id = temp_data['id']
         fixed_id = temp_id.match(/(\d+)/).captures
         variant_id = temp_data['variants']['edges'].first['node']['id'].match(/(\d+)/).captures
-        sku = temp_data['variants']['edges'].first['node']['barcode']
+        sku = temp_data['variants']['edges'].first['node']['sku']
         price = temp_data['variants']['edges'].first['node']['price']
 
         product_collection = nil
@@ -172,6 +173,8 @@ module Checklist
 
       puts "product_array = #{product_array.inspect}"
 
+      detail_product_collection = Array.new
+
       product_array.each do |pa|
         my_product_collection = pa['handle']
 
@@ -189,17 +192,26 @@ module Checklist
                         title
                         handle
                         productType
+                        options {
+                          name
+                          values
+                        }
                         publishedAt
                         status
                         tags
                         createdAt
                         templateSuffix
+                        ellie_order_info: metafield(namespace: "ellie_order_info", key: "product_collection") {
+                              value
+                            } 
                         
                       variants(first: 25){
                         edges{
                           node {
                             id
                             barcode
+                            sku
+                            title
                             inventoryQuantity
                             price
                           
@@ -226,10 +238,18 @@ module Checklist
         puts "*****************"
         puts myp
         puts "****************"
-      end
+
+        temp_hash2 = {"product_collection" => pa['product_collection'], "product_name" => myp['node']['title'], "product_type" => myp['node']['productType'], "options" => myp['node']['options'].first['name'], "template_suffix" =>  myp['node']['templateSuffix'], "product_status" => myp['node']['status']}
+        detail_product_collection.push(temp_hash2)
 
       end
 
+      end
+
+     
+      puts "Detail_product_collection = #{detail_product_collection}"
+
+      
       
 
       exit
