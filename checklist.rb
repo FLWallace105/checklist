@@ -173,6 +173,8 @@ module Checklist
 
       puts "product_array = #{product_array.inspect}"
 
+     
+
       detail_product_collection = Array.new
 
       product_array.each do |pa|
@@ -249,113 +251,39 @@ module Checklist
      
       puts "Detail_product_collection = #{detail_product_collection}"
 
+      my_accum = Array.new
+
+      detail_product_collection.each do |dp|
+        my_accum.push(dp['product_collection'])
+
+      end
+
+      puts "my_accum = #{my_accum}"
+
+      my_tally = my_accum.tally
+
+      puts my_tally
+
+      product_array.each do |pa|
+        puts "product_array = #{pa.inspect}"
+        my_coll_count = my_tally["#{pa['product_collection']}"]
+        puts "my_coll_count = #{my_coll_count}"
+        if my_coll_count == 3
+          pa['product_match'] = true
+        else
+          pa['product_match'] = true
+        end
+
+      end
+
       
-      
-
-      exit
 
 
 
 
       
-
-    detail_product_collection = Array.new
-    found_accessory_array = Array.new
-    found_equipment_array = Array.new
 
     
-
-    product_array.each do |myp|
-      puts "-------------"
-      puts myp
-      puts "-------------"
-
-      my_collection = ShopifyAPI::CustomCollection.all(title: myp['product_collection'])
-      puts "my_collection = #{my_collection.inspect}"
-      puts my_collection.first.original_state[:id]
-      collection_id = my_collection.first.original_state[:id]
-      product_count = ShopifyAPI::Product.count(:collection_id => collection_id).body['count']
-      puts "We have #{product_count} products in the collection"
-
-      product_title_number = 0
-
-      if /(\d\s)/i =~ myp['product_title']
-        product_title_number = $1.to_i
-        puts "product_title_number = #{product_title_number}"
-      end
-      if product_title_number == product_count.to_i
-        puts "Products in the collection match what they should be, products in collection = #{product_title_number}, prods in collection = #{product_count}"
-        myp['product_match'] = true
-      else
-        puts "ERROR, product_count does not match the collection: products in collection = #{product_title_number}, prods in collection = #{product_count}"
-        myp['product_match'] = false
-      end
-
-      next if  myp['product_collection'] =~ /ellie\spick/i
-      next if myp['product_title'] =~ /ellie\spick/i
-      my_products = ShopifyAPI::Product.all( collection_id: collection_id,  limit: 250 )
-      found_accessory_hash = {"product_collection" => myp['product_collection'], "num_found" => 0}
-      found_equipment_hash = {"product_collection" => myp['product_collection'], "num_found" => 0}
-
-      my_products.each do |myprod|
-        puts "-------------"
-        puts myprod.inspect
-        puts "-------------"
-        
-        
-        if myp['product_collection'] =~ /5\sitem/i
-          if myprod.original_state[:product_type] == "Accessories" 
-            puts "Found Accessory = TRUE #{myprod.original_state[:product_type]}"
-            
-            found_accessory_hash['num_found'] = found_accessory_hash['num_found'] + 1
-          else
-            #nothing
-          end
-          if myprod.original_state[:product_type] == "Equipment"
-            
-            found_equipment_hash['num_found'] = found_equipment_hash['num_found'] + 1
-            puts "Found Equipment = TRUE #{myprod.original_state[:product_type]}"
-            
-          else
-            #nothing
-          end
-
-        end
-        temp_hash2 = {"product_collection" => myp['product_collection'], "product_name" => myprod.original_state[:title], "product_type" => myprod.original_state[:product_type], "options" => myprod.original_state[:options].first['name'], "template_suffix" =>  myprod.original_state[:template_suffix], "product_status" => myprod.original_state[:status]}
-        detail_product_collection.push(temp_hash2)
-        
-
-      end
-      found_accessory_array.push(found_accessory_hash)
-      found_equipment_array.push(found_equipment_hash)
-      
-
-    end
-
-    
-
-    detail_product_collection.each do |dpc|
-      puts "*************"
-      
-      if dpc['product_collection'] =~ /5\sitem/i 
-        my_found_five = found_accessory_array.select {|x| x['product_collection'] == dpc['product_collection']}
-        puts "my_found_five = #{my_found_five.inspect}"
-        accessory_found = my_found_five.first['num_found']
-        my_found_five_eq = found_equipment_array.select { |x| x['product_collection'] == dpc['product_collection']}
-        equipment_found = my_found_five_eq.first['num_found']
-        if dpc['product_type'] == 'Equipment'
-          dpc['equipment_found'] = equipment_found
-        end
-        if dpc['product_type'] == 'Accessories'
-          dpc['accessories_found'] = accessory_found
-        end
-
-
-        #dpc['five_item_accessories_equipment_ok'] = "funky"
-      end
-      puts dpc.inspect
-      puts "************"
-    end
     puts "email = #{myemail}"
 
     File.delete('ellie_checklist_rollover.csv') if File.exist?('ellie_checklist_rollover.csv')
@@ -371,27 +299,11 @@ module Checklist
 
             end
             hdr << ["---------- Detail Product Collection info ------------"]
-            hdr << ["product_collection", "product_name", "product_type", "template_suffix", "options", "equipment_found", "accessories_found", "product_status", "product_status_ok", "product_type_ok" ]
+            hdr << ["product_collection", "product_name", "product_type", "template_suffix", "options", "Not Used", "Not Used", "product_status", "product_status_ok", "product_type_ok" ]
             detail_product_collection.each do |dpc|
               if dpc["product_type"] =~ /bottom/i
                 csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], "< ----- BADDDD Bottoms will break this collection"]
-              elsif dpc["product_collection"] =~ /5\sitem/i && dpc["product_type"] == "Accessories"
-                if dpc['accessories_found'] != 1
-                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['accessories_found'], "<---------- ERROR Must be only 1"]
-                else
-                  product_status_production = product_status_ok(dpc["product_status"])
-                  temp_ok = product_type_ok(dpc["product_type"])
-                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], "", dpc['accessories_found'], dpc["product_status"], product_status_production, temp_ok]
-                end
-                
-              elsif dpc["product_collection"] =~ /5\sitem/i && dpc["product_type"] == "Equipment"
-                if dpc['equipment_found'] != 1
-                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['equipment_found'], "<---------- Error must be only 1"]
-                else
-                  product_status_production = product_status_ok(dpc["product_status"])
-                  temp_ok = product_type_ok(dpc["product_type"])
-                  csv_data_out = [dpc['product_collection'], dpc["product_name"], dpc["product_type"], dpc['template_suffix'], dpc['options'], dpc['equipment_found'], "", dpc["product_status"], product_status_production, temp_ok]
-                end
+              
                 
               else
                 product_status_production = product_status_ok(dpc["product_status"])
@@ -412,7 +324,7 @@ module Checklist
     mystring = Base64.strict_encode64(File.open('ellie_checklist_rollover.csv', "rb").read)
 
     mail = SendGrid::Mail.new
-    mail.from = Email.new(email: 'test@example.com')
+    mail.from = Email.new(email: 'checklist_info@zobha.com')
     mail.subject = 'Ellie.com Rollover Checklist Report'
     personalization = Personalization.new
     personalization.add_to(Email.new(email: myemail, name: 'Floyd Wallace'))
@@ -429,7 +341,7 @@ module Checklist
     attachment.content_id = 'Ellie Rollover Checklist Report'
     mail.add_attachment(attachment)
 
-    mail.reply_to = Email.new(email: 'test@example.com')
+    mail.reply_to = Email.new(email: 'checklist_info@zobha.com')
 
     # puts JSON.pretty_generate(mail.to_json)
     puts mail.to_json

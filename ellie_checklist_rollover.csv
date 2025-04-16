@@ -1,19 +1,19 @@
 product_title,product_id,variant_id,sku,price,product_collection,title_equals_collection,published_at,product_count_match,handle,slugified_title,handle_ok,template_suffix,product_status
-Ink Wash - 3 Items,7329115963450,40595832373306,760563009215,89.95,Ink Wash - 3 Items,true,,true,ink-wash-3-items,ink-wash-3-items,true,looks
-Morning Dew - 3 Items,7329113440314,40595821297722,760563009192,89.95,Morning Dew - 3 Items,true,,true,morning-dew-3-items,morning-dew-3-items,true,looks
-Peaceful Pines - 3 Items,7329115340858,40595828277306,760563009208,89.95,Peaceful Pines - 3 Items,true,,true,peaceful-pines-3-items,peaceful-pines-3-items,true,looks
-Sunset Ridge - 3 Items,7329111146554,40595817168954,760563009185,89.95,Sunset Ridge - 3 Items,true,,true,sunset-ridge-3-items,sunset-ridge-3-items,true,looks
+Cool Cactus - 3 Items,"[""7393521205306""]","[""40832228130874""]",760563357521,89.95,Cool Cactus - 3 Items,true,2025-04-01T03:00:01Z,true,cool-cactus-3-items,cool-cactus-3-items,true,looks
+Auburn Ember - 3 Items,"[""7393522024506""]","[""40832230588474""]",760563357538,89.95,Auburn Ember - 3 Items,true,2025-04-01T03:00:02Z,true,auburn-ember-3-items,auburn-ember-3-items,true,looks
+Serene Skies - 3 Items,"[""7393523433530""]","[""40832238026810""]",760563357545,89.95,Serene Skies - 3 Items,true,2025-04-01T03:00:03Z,true,serene-skies-3-items,serene-skies-3-items,true,looks
+Alloy Allure - 3 Items,"[""7393524580410""]","[""40832243302458""]",760563357552,89.95,Alloy Allure - 3 Items,true,2025-04-01T03:00:04Z,true,alloy-allure-3-items,alloy-allure-3-items,true,looks
 ---------- Detail Product Collection info ------------
-product_collection,product_name,product_type,template_suffix,options,equipment_found,accessories_found,product_status,product_status_ok,product_type_ok
-Ink Wash - 3 Items,Cynthia Sport Bra (Rosin Ink Watercolor),Sports Bra,,Color,"","",active,true,true
-Ink Wash - 3 Items,Lotuz Zen Legging (Rosin Ink Watercolor),Leggings,,Color,"","",active,true,true
-Ink Wash - 3 Items,Mel Jacket (H. Gardenia),Tops,,Color,"","",active,true,true
-Morning Dew - 3 Items,Camilla Sport Bra (Trooper),Sports Bra,,Color,"","",active,true,true
-Morning Dew - 3 Items,Monica Tee (H. Trooper Nature Doodle),Tops,,Color,"","",active,true,true
-Morning Dew - 3 Items,Wren Legging (Heather Grey),Leggings,,Color,"","",active,true,true
-Peaceful Pines - 3 Items,Ari Jacket (Grape Leaf),sports-jacket,,Color,"","",active,true,true
-Peaceful Pines - 3 Items,Harley Long Sleeve Top (Grape Leaf),Tops,,Color,"","",active,true,true
-Peaceful Pines - 3 Items,Vera Jogger (Grape Leaf),Leggings,,Color,"","",active,true,true
-Sunset Ridge - 3 Items,Aubrey Legging (Black),Leggings,,Color,"","",draft,false,true
-Sunset Ridge - 3 Items,Harley L/S Top (Black),Tops,,Color,"","",draft,false,true
-Sunset Ridge - 3 Items,Zia Jacket (Aragon Tonal Southwestern),sports-jacket,,Color,"","",draft,false,true
+product_collection,product_name,product_type,template_suffix,options,Not Used,Not Used,product_status,product_status_ok,product_type_ok
+Cool Cactus - 3 Items,Mia Full Zip (H. Iceberg Green),sports-jacket,,Size,"","",ACTIVE,false,true
+Cool Cactus - 3 Items,Mili Tank (Silver Blue),tops,,Size,"","",ACTIVE,false,false
+Cool Cactus - 3 Items,"27 1/2"" Mia Jogger (H. Iceberg Green)",Leggings,,Size,"","",ACTIVE,false,true
+Auburn Ember - 3 Items,Mia Full Zip (H. Redwood),sports-jacket,,Size,"","",ACTIVE,false,true
+Auburn Ember - 3 Items,"27 1/2"" Mia Jogger (H. Redwood)",Leggings,,Size,"","",ACTIVE,false,true
+Auburn Ember - 3 Items,Janie Rib Tank (Black),tops,,Size,"","",ACTIVE,false,false
+Serene Skies - 3 Items,Hazel Sport Bra (Black),Sports Bra,,Size,"","",ACTIVE,false,true
+Serene Skies - 3 Items,Mili Tank (Skyway),tops,,Size,"","",ACTIVE,false,false
+Serene Skies - 3 Items,Travel Legging (Black),Leggings,,Size,"","",ACTIVE,false,true
+Alloy Allure - 3 Items,Mia Full Zip (H. Alloy),tops,,Size,"","",ACTIVE,false,false
+Alloy Allure - 3 Items,"27 1/2"" Mia Jogger (H. Alloy)",Leggings,,Size,"","",ACTIVE,false,true
+Alloy Allure - 3 Items,Willow Molded Bra (H. Charcoal),Sports Bra,,Size,"","",ACTIVE,false,true
