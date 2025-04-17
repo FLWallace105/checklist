@@ -1,19 +1,19 @@
 product_title,product_id,variant_id,sku,price,product_collection,title_equals_collection,published_at,product_count_match,handle,slugified_title,handle_ok,template_suffix,product_status
-Cool Cactus - 3 Items,"[""7393521205306""]","[""40832228130874""]",760563357521,89.95,Cool Cactus - 3 Items,true,2025-04-01T03:00:01Z,true,cool-cactus-3-items,cool-cactus-3-items,true,looks
-Auburn Ember - 3 Items,"[""7393522024506""]","[""40832230588474""]",760563357538,89.95,Auburn Ember - 3 Items,true,2025-04-01T03:00:02Z,true,auburn-ember-3-items,auburn-ember-3-items,true,looks
-Serene Skies - 3 Items,"[""7393523433530""]","[""40832238026810""]",760563357545,89.95,Serene Skies - 3 Items,true,2025-04-01T03:00:03Z,true,serene-skies-3-items,serene-skies-3-items,true,looks
-Alloy Allure - 3 Items,"[""7393524580410""]","[""40832243302458""]",760563357552,89.95,Alloy Allure - 3 Items,true,2025-04-01T03:00:04Z,true,alloy-allure-3-items,alloy-allure-3-items,true,looks
+Cool Cactus - 3 Items,"[""7393521205306""]","[""40832228130874""]",760563357521,89.95,Cool Cactus - 3 Items,true,2025-04-01T03:00:01Z,true,cool-cactus-3-items,cool-cactus-3-items,true,looks,ACTIVE
+Auburn Ember - 3 Items,"[""7393522024506""]","[""40832230588474""]",760563357538,89.95,Auburn Ember - 3 Items,true,2025-04-01T03:00:02Z,true,auburn-ember-3-items,auburn-ember-3-items,true,looks,ACTIVE
+Serene Skies - 3 Items,"[""7393523433530""]","[""40832238026810""]",760563357545,89.95,Serene Skies - 3 Items,true,2025-04-01T03:00:03Z,true,serene-skies-3-items,serene-skies-3-items,true,looks,ACTIVE
+Alloy Allure - 3 Items,"[""7393524580410""]","[""40832243302458""]",760563357552,89.95,Alloy Allure - 3 Items,true,2025-04-01T03:00:04Z,true,alloy-allure-3-items,alloy-allure-3-items,true,looks,ACTIVE
 ---------- Detail Product Collection info ------------
 product_collection,product_name,product_type,template_suffix,options,Not Used,Not Used,product_status,product_status_ok,product_type_ok
-Cool Cactus - 3 Items,Mia Full Zip (H. Iceberg Green),sports-jacket,,Size,"","",ACTIVE,false,true
-Cool Cactus - 3 Items,Mili Tank (Silver Blue),tops,,Size,"","",ACTIVE,false,false
-Cool Cactus - 3 Items,"27 1/2"" Mia Jogger (H. Iceberg Green)",Leggings,,Size,"","",ACTIVE,false,true
-Auburn Ember - 3 Items,Mia Full Zip (H. Redwood),sports-jacket,,Size,"","",ACTIVE,false,true
-Auburn Ember - 3 Items,"27 1/2"" Mia Jogger (H. Redwood)",Leggings,,Size,"","",ACTIVE,false,true
-Auburn Ember - 3 Items,Janie Rib Tank (Black),tops,,Size,"","",ACTIVE,false,false
-Serene Skies - 3 Items,Hazel Sport Bra (Black),Sports Bra,,Size,"","",ACTIVE,false,true
-Serene Skies - 3 Items,Mili Tank (Skyway),tops,,Size,"","",ACTIVE,false,false
-Serene Skies - 3 Items,Travel Legging (Black),Leggings,,Size,"","",ACTIVE,false,true
-Alloy Allure - 3 Items,Mia Full Zip (H. Alloy),tops,,Size,"","",ACTIVE,false,false
-Alloy Allure - 3 Items,"27 1/2"" Mia Jogger (H. Alloy)",Leggings,,Size,"","",ACTIVE,false,true
-Alloy Allure - 3 Items,Willow Molded Bra (H. Charcoal),Sports Bra,,Size,"","",ACTIVE,false,true
+Cool Cactus - 3 Items,Mia Full Zip (H. Iceberg Green),sports-jacket,,Size,"","",ACTIVE,true,true
+Cool Cactus - 3 Items,Mili Tank (Silver Blue),tops,,Size,"","",ACTIVE,true,true
+Cool Cactus - 3 Items,"27 1/2"" Mia Jogger (H. Iceberg Green)",Leggings,,Size,"","",ACTIVE,true,true
+Auburn Ember - 3 Items,Mia Full Zip (H. Redwood),sports-jacket,,Size,"","",ACTIVE,true,true
+Auburn Ember - 3 Items,"27 1/2"" Mia Jogger (H. Redwood)",Leggings,,Size,"","",ACTIVE,true,true
+Auburn Ember - 3 Items,Janie Rib Tank (Black),tops,,Size,"","",ACTIVE,true,true
+Serene Skies - 3 Items,Hazel Sport Bra (Black),Sports Bra,,Size,"","",ACTIVE,true,true
+Serene Skies - 3 Items,Mili Tank (Skyway),tops,,Size,"","",ACTIVE,true,true
+Serene Skies - 3 Items,Travel Legging (Black),Leggings,,Size,"","",ACTIVE,true,true
+Alloy Allure - 3 Items,Mia Full Zip (H. Alloy),tops,,Size,"","",ACTIVE,true,true
+Alloy Allure - 3 Items,"27 1/2"" Mia Jogger (H. Alloy)",Leggings,,Size,"","",ACTIVE,true,true
+Alloy Allure - 3 Items,Willow Molded Bra (H. Charcoal),Sports Bra,,Size,"","",ACTIVE,true,true

@@ -21,7 +21,7 @@ module Checklist
     include SendGrid
     #extend ShopifyApi
 
-    ACCEPTABLE_PRODUCT_TYPES = ["Tops", "Accessories", "Equipment", "Leggings", "Sports Bra", "Jacket", "Wrap", "sports-jacket", "Gloves", "Dress"]
+    ACCEPTABLE_PRODUCT_TYPES = ["Tops", "tops", "Accessories", "Equipment", "Leggings", "Sports Bra", "Jacket", "Wrap", "sports-jacket", "Gloves", "Dress"]
 
     def initialize
       @shopname = ENV['SHOPIFY_SHOP_NAME']
@@ -164,7 +164,7 @@ module Checklist
           handle_ok = true
         end
 
-        my_hash = {"product_title" => temp_data['title'], "product_id" => fixed_id, "variant_id" => variant_id, "sku" => sku, "price" => price, "product_collection" => product_collection, "title_equals_collection" => title_equals_collection, "published_at" => temp_data['publishedAt'], "handle" => temp_data['handle'], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => temp_data['templateSuffix']}
+        my_hash = {"product_title" => temp_data['title'], "product_id" => fixed_id, "variant_id" => variant_id, "sku" => sku, "price" => price, "product_collection" => product_collection, "title_equals_collection" => title_equals_collection, "published_at" => temp_data['publishedAt'], "handle" => temp_data['handle'], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => temp_data['templateSuffix'], "status" => temp_data['status']}
           
         product_array.push(my_hash)
 
@@ -294,7 +294,7 @@ module Checklist
         CSV.open('ellie_checklist_rollover.csv','a+', :write_headers=> true, :headers => column_header) do |hdr|
             column_header = nil
             product_array.each do |pa|
-              csv_data_out = [pa['product_title'], pa["product_id"], pa['variant_id'], pa['sku'], pa['price'], pa['product_collection'], pa['title_equals_collection'], pa['published_at'], pa['product_match'], pa["handle"], pa["slugified_title"], pa["handle_ok"], pa["template_suffix"] ]
+              csv_data_out = [pa['product_title'], pa["product_id"], pa['variant_id'], pa['sku'], pa['price'], pa['product_collection'], pa['title_equals_collection'], pa['published_at'], pa['product_match'], pa["handle"], pa["slugified_title"], pa["handle_ok"], pa["template_suffix"], pa['status'] ]
               hdr << csv_data_out
 
             end
@@ -359,7 +359,7 @@ module Checklist
     end
 
     def product_status_ok(product_status)
-      if product_status == "active"
+      if product_status.downcase == "active"
         return true
       else
         return false
