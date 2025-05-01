@@ -1,8 +1,8 @@
-require 'shopify_api'
+#require 'shopify_api'
 require 'sendgrid-ruby'
 require 'csv'
 module ShopifyResources
-    ACCEPTABLE_PRODUCT_TYPES = ["Tops", "Accessories", "Equipment", "Leggings", "Sports Bra", "Jacket", "Wrap", "sports-jacket", "Gloves", "Dress"]
+    ACCEPTABLE_PRODUCT_TYPES = ["Tops", "tops", "Accessories", "Equipment", "Leggings", "Sports Bra", "Jacket", "Wrap", "sports-jacket", "Gloves", "Dress"]
 
     include SendGrid
 

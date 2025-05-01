@@ -1,7 +1,7 @@
 #checklist.rb
 require 'dotenv'
 require 'httparty'
-require 'shopify_api'
+#require 'shopify_api'
 # require 'active_record'
 # require 'sinatra/activerecord'
 #require 'logger'
@@ -164,7 +164,7 @@ module Checklist
           handle_ok = true
         end
 
-        my_hash = {"product_title" => temp_data['title'], "product_id" => fixed_id, "variant_id" => variant_id, "sku" => sku, "price" => price, "product_collection" => product_collection, "title_equals_collection" => title_equals_collection, "published_at" => temp_data['publishedAt'], "handle" => temp_data['handle'], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => temp_data['templateSuffix'], "status" => temp_data['status']}
+        my_hash = {"product_title" => temp_data['title'], "product_id" => fixed_id, "variant_id" => variant_id, "sku" => sku, "price" => price, "product_collection" => product_collection, "title_equals_collection" => title_equals_collection, "published_at" => temp_data['publishedAt'], "handle" => temp_data['handle'], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => temp_data['templateSuffix'], "status" => temp_data['status'], "tags" => temp_data['tags']}
           
         product_array.push(my_hash)
 
@@ -172,6 +172,8 @@ module Checklist
 
 
       puts "product_array = #{product_array.inspect}"
+
+      
 
      
 
@@ -290,11 +292,12 @@ module Checklist
 
     
 
-    column_header = ["product_title", "product_id", "variant_id", "sku", "price", "product_collection", "title_equals_collection", "published_at", "product_count_match", "handle", "slugified_title", "handle_ok", "template_suffix", "product_status"]
+    column_header = ["product_title", "product_id", "variant_id", "sku", "price", "product_collection", "title_equals_collection", "published_at", "product_count_match", "handle", "slugified_title", "handle_ok", "template_suffix", "product_status", "Tapcart Tags OK"]
         CSV.open('ellie_checklist_rollover.csv','a+', :write_headers=> true, :headers => column_header) do |hdr|
             column_header = nil
             product_array.each do |pa|
-              csv_data_out = [pa['product_title'], pa["product_id"], pa['variant_id'], pa['sku'], pa['price'], pa['product_collection'], pa['title_equals_collection'], pa['published_at'], pa['product_match'], pa["handle"], pa["slugified_title"], pa["handle_ok"], pa["template_suffix"], pa['status'] ]
+              coll_tags_ok = tapcart_tags_ok(pa['tags'], pa['product_collection'])
+              csv_data_out = [pa['product_title'], pa["product_id"], pa['variant_id'], pa['sku'], pa['price'], pa['product_collection'], pa['title_equals_collection'], pa['published_at'], pa['product_match'], pa["handle"], pa["slugified_title"], pa["handle_ok"], pa["template_suffix"], pa['status'], coll_tags_ok ]
               hdr << csv_data_out
 
             end
@@ -371,6 +374,14 @@ module Checklist
       my_ok = ACCEPTABLE_PRODUCT_TYPES.include?(product_type)
       return my_ok
 
+    end
+
+    def  tapcart_tags_ok(my_tags, product_collection)
+      tags_ok = false
+      if my_tags.include? product_collection
+        tags_ok = true
+      end
+      return tags_ok
     end
 
 end

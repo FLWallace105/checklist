@@ -1,8 +1,8 @@
-product_title,product_id,variant_id,sku,price,product_collection,title_equals_collection,published_at,product_count_match,handle,slugified_title,handle_ok,template_suffix,product_status
-Cool Cactus - 3 Items,"[""7393521205306""]","[""40832228130874""]",760563357521,89.95,Cool Cactus - 3 Items,true,2025-04-01T03:00:01Z,true,cool-cactus-3-items,cool-cactus-3-items,true,looks,ACTIVE
-Auburn Ember - 3 Items,"[""7393522024506""]","[""40832230588474""]",760563357538,89.95,Auburn Ember - 3 Items,true,2025-04-01T03:00:02Z,true,auburn-ember-3-items,auburn-ember-3-items,true,looks,ACTIVE
-Serene Skies - 3 Items,"[""7393523433530""]","[""40832238026810""]",760563357545,89.95,Serene Skies - 3 Items,true,2025-04-01T03:00:03Z,true,serene-skies-3-items,serene-skies-3-items,true,looks,ACTIVE
-Alloy Allure - 3 Items,"[""7393524580410""]","[""40832243302458""]",760563357552,89.95,Alloy Allure - 3 Items,true,2025-04-01T03:00:04Z,true,alloy-allure-3-items,alloy-allure-3-items,true,looks,ACTIVE
+product_title,product_id,variant_id,sku,price,product_collection,title_equals_collection,published_at,product_count_match,handle,slugified_title,handle_ok,template_suffix,product_status,Tapcart Tags OK
+Cool Cactus - 3 Items,"[""7393521205306""]","[""40832228130874""]",760563357521,89.95,Cool Cactus - 3 Items,true,2025-04-01T03:00:01Z,true,cool-cactus-3-items,cool-cactus-3-items,true,looks,ACTIVE,false
+Auburn Ember - 3 Items,"[""7393522024506""]","[""40832230588474""]",760563357538,89.95,Auburn Ember - 3 Items,true,2025-04-01T03:00:02Z,true,auburn-ember-3-items,auburn-ember-3-items,true,looks,ACTIVE,false
+Serene Skies - 3 Items,"[""7393523433530""]","[""40832238026810""]",760563357545,89.95,Serene Skies - 3 Items,true,2025-04-01T03:00:03Z,true,serene-skies-3-items,serene-skies-3-items,true,looks,ACTIVE,false
+Alloy Allure - 3 Items,"[""7393524580410""]","[""40832243302458""]",760563357552,89.95,Alloy Allure - 3 Items,true,2025-04-01T03:00:04Z,true,alloy-allure-3-items,alloy-allure-3-items,true,looks,ACTIVE,true
 ---------- Detail Product Collection info ------------
 product_collection,product_name,product_type,template_suffix,options,Not Used,Not Used,product_status,product_status_ok,product_type_ok
 Cool Cactus - 3 Items,Mia Full Zip (H. Iceberg Green),sports-jacket,,Size,"","",ACTIVE,true,true

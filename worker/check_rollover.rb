@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
-require 'shopify_api'
+#require 'shopify_api'
 require 'dotenv'
 require 'json'
+
+require_relative '../checklist'
 
 Dotenv.load
 Dir[File.join(__dir__, 'lib', '*.rb')].each { |file| require file }
@@ -32,23 +34,24 @@ class CheckRollover
     puts "#{api_key}, #{secret}, #{shopname}, #{app_token}"
 
 
-      ShopifyAPI::Context.setup(
-        api_key: "DUMMY",
-        api_secret_key: app_token,
-        scope: "DUMMY",
-        host_name: "DUMMY",
-        private_shop: "#{shopname}.myshopify.com",
-        session_storage: ShopifyAPI::Auth::FileSessionStorage.new,
-        is_embedded: false, 
-        is_private: true, 
-        api_version: "2022-07"
+      # ShopifyAPI::Context.setup(
+      #   api_key: "DUMMY",
+      #   api_secret_key: app_token,
+      #   scope: "DUMMY",
+      #   host_name: "DUMMY",
+      #   private_shop: "#{shopname}.myshopify.com",
+      #   session_storage: ShopifyAPI::Auth::FileSessionStorage.new,
+      #   is_embedded: false, 
+      #   is_private: true, 
+      #   api_version: "2022-07"
         
-      )
+      # )
 
       
 
-      get_shopify_checklist_data(email)
+      #get_shopify_checklist_data(email)
 
+      Checklist::ShopifyGetter.new.shopify_get_all_resources(email)
 
 
       puts "All done"

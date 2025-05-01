@@ -15,7 +15,7 @@ rackup "#{root}/config.ru"
 port ENV['PORT']
 environment ENV['RACK_ENV']
 
-bind "unix://#{shared_dir}/puma/socket"
+bind "unix:///tmp/check_listener.sock"
 stdout_redirect "#{shared_dir}/puma/stdout.log", "#{shared_dir}/puma/stderr.log", true
 pidfile "#{shared_dir}/puma/pid"
 state_path "#{shared_dir}/puma/state"

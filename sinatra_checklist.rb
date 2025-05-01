@@ -46,6 +46,7 @@ class RolloverChecklist < Sinatra::Base
     puts "sanitized_params = #{sanitized_params}"
     flash[:alert_success] = 'Generating Checklist, check your email in about 15 minutes ...'
     Resque.enqueue_to(:create_checklist_csv, 'CheckRollover', sanitized_params)
+    puts "OK sent to queue"
     redirect "/"
 
   
