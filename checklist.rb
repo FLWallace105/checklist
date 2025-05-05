@@ -164,7 +164,7 @@ module Checklist
           handle_ok = true
         end
 
-        my_hash = {"product_title" => temp_data['title'], "product_id" => fixed_id, "variant_id" => variant_id, "sku" => sku, "price" => price, "product_collection" => product_collection, "title_equals_collection" => title_equals_collection, "published_at" => temp_data['publishedAt'], "handle" => temp_data['handle'], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => temp_data['templateSuffix'], "status" => temp_data['status'], "tags" => temp_data['tags']}
+        my_hash = {"product_title" => temp_data['title'], "product_id" => fixed_id[0], "variant_id" => variant_id[0], "sku" => sku, "price" => price, "product_collection" => product_collection, "title_equals_collection" => title_equals_collection, "published_at" => temp_data['publishedAt'], "handle" => temp_data['handle'], "slugified_title" => slugified_title, "handle_ok" => handle_ok, "template_suffix" => temp_data['templateSuffix'], "status" => temp_data['status'], "tags" => temp_data['tags']}
           
         product_array.push(my_hash)
 
